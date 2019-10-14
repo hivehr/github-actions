@@ -22,7 +22,7 @@ jobs:
     - name: "[get-jira-issue] Push to Package Registry"
       working-directory: packages/get-jira-issue
       run: |
-        docker login docker.pkg.github.com && \
+        docker login docker.pkg.github.com --username ${{ github.actor }} --password ${GITHUB_TOKEN} && \
         docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest && \
         docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
 
