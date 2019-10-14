@@ -1,4 +1,4 @@
-name: Publish Package
+name: Publish Packages
 
 on:
   push:
@@ -12,8 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       
-    - name: Build the Docker image
+    - name: "[get-jira-issue] Build Docker image"
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.ref }}
+      working-directory: packages/get-jira-issue
     
-    - name: Push to Package Registry
+    - name: "[get-jira-issue] Push to Package Registry"
       run: docker push docker.pkg.github.com/phanatic/repo/app:1.0.0
+      working-directory: packages/get-jira-issue
+      
