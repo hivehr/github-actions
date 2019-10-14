@@ -16,7 +16,9 @@ const jiraFactory = () =>
 const getFirstMatchingGroup = (pattern: RegExp, title: string) => {
     const parts = pattern.exec(title);
     if (parts == null) {
-        throw new Error(`No valid JIRA issue information found`);
+        throw new Error(
+            `No valid JIRA issue found in given value: '${title}'. Did you forget to name it correctly?`
+        );
     }
 
     return parts[1];
