@@ -30,7 +30,7 @@ async function main() {
         owner,
         repo,
         title,
-        number: pull_request!.number
+        pull_number: pull_request!.number
     });
 }
 
