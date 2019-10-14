@@ -1,4 +1,4 @@
-import { debug, getInput, setFailed } from "@actions/core";
+import { info, getInput, setFailed } from "@actions/core";
 import { context, GitHub } from "@actions/github";
 
 const parseTitle = (title: string, oldTitle: string) => {
@@ -80,7 +80,7 @@ async function main() {
 
     // Grab and parse inputs
     const inputs = parseInputs(pull_request);
-    debug(`Inputs: ${JSON.stringify(inputs)}`);
+    info(`Updating PR: ${JSON.stringify(inputs)}`);
 
     // Setup GitHub client with the given GITHUB_TOKEN
     const client = new GitHub(getInput("repo-token"));
