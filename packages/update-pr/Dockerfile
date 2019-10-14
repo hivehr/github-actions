@@ -13,6 +13,9 @@ LABEL "com.github.actions.inputs.repo-token.description"="The GITHUB_TOKEN secre
 LABEL "com.github.actions.inputs.title.description"="Title to update the PR to"
 LABEL "com.github.actions.inputs.addLabels.description"="Labels to add to the PR"
 LABEL "com.github.actions.inputs.removeLabels.description"="Labels to remove from the PR"
+LABEL "com.github.actions.inputs.body.description"="Text to set the PR to (superceeds prefixBody and suffixBody)"
+LABEL "com.github.actions.inputs.prefixBody.description"="Text to prefix the current PR body with"
+LABEL "com.github.actions.inputs.suffixBody.description"="Text to suffix the current PR body with"
 
 WORKDIR /app
 COPY package.json yarn.lock .yarnrc ./

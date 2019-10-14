@@ -14,6 +14,28 @@ const parseTitle = (title: string, oldTitle: string) => {
     return title;
 };
 
+const parseBody = (
+    body: string,
+    prefix: string,
+    suffix: string,
+    currentBody = ""
+) => {
+    if (body != null && body !== "") {
+        return body;
+    }
+
+    let newBody = currentBody;
+
+    if (prefix != null && prefix !== "" && !newBody.startsWith(prefix)) {
+        newBody = prefix + newBody;
+    }
+    if (suffix != null && suffix !== "" && !newBody.endsWith(suffix)) {
+        newBody += suffix;
+    }
+
+    return newBody;
+};
+
 const parseLabels = (
     addLabels: string,
     removeLabels: string,
@@ -35,6 +57,13 @@ const parseLabels = (
 
 const parseInputs = (pull_request: any) => ({
     title: parseTitle(getInput("title"), pull_request!.title),
+
+    body: parseBody(
+        getInput("body"),
+        getInput("prefixBody"),
+        getInput("suffixBody"),
+        pull_request!.body
+    ),
 
     labels: parseLabels(
         getInput("addLabels"),
@@ -61,6 +90,7 @@ async function main() {
         owner,
         repo,
         title: inputs.title,
+        body: inputs.body,
         pull_number: pull_request!.number
     });
 
