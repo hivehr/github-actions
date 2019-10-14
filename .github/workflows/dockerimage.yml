@@ -2,27 +2,27 @@ name: Publish Packages
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
- 
+
     steps:
     - uses: actions/checkout@v1
-      
+
     - name: "[get-jira-issue] Build Docker image"
       working-directory: packages/get-jira-issue
       run: |
         docker build . \
           --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest \
           --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
-    
+
     - name: "[get-jira-issue] Push to Package Registry"
       working-directory: packages/get-jira-issue
       run: |
-        docker login && \
+        docker login docker.pkg.github.com && \
         docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest && \
         docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
-      
+
