@@ -23,6 +23,6 @@ jobs:
       working-directory: packages/get-jira-issue
       run: |
         docker login docker.pkg.github.com --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} && \
-        docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest && \
-        docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
+        docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }} && \
+        docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest
 
