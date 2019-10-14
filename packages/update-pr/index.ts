@@ -26,12 +26,6 @@ async function main() {
     const title = parseTitle(pull_request!.title, getInput("title"));
     debug(`title: ${title}`);
 
-        "search.exclude": {	        "search.exclude": {
-            "**/node_modules/**": true,	            "**/node_modules/**": true,
-            ".yarn/releases/**/*": true,	            "**/.yarn/releases/**/*": true,
-            "**/.yarn/cache/**/*": true,
-            "lib/**": true	            "lib/**": true
-        },	        },
     await client.pulls.update({
         owner,
         repo,
