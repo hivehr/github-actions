@@ -15,9 +15,8 @@ jobs:
     - name: "[get-jira-issue] Build Docker image"
       working-directory: packages/get-jira-issue
       run: |
-        docker build . 
-          --file Dockerfile 
-          --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest
+        docker build . \
+          --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest \
           --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
     
     - name: "[get-jira-issue] Push to Package Registry"
