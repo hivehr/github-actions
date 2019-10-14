@@ -71,7 +71,7 @@ async function main() {
             owner,
             repo,
             labels,
-            number: pull_request!.number
+            issue_number: pull_request!.number
         });
     }
 }
