@@ -3,6 +3,9 @@ import Jira from "jira-connector";
 
 const { JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_USER_EMAIL } = process.env;
 
+const getOrDefault = (obj: any, key: string, defaultValue: any) =>
+    obj != null && obj[key] != null ? obj[key] : defaultValue;
+
 const jiraFactory = () =>
     new Jira({
         host: JIRA_BASE_URL!,
@@ -55,7 +58,7 @@ const main = async () => {
     setOutput("creator", issue.fields.creator.emailAddress);
     setOutput(
         "timeSpent",
-        issue.fields.timeSpent.timetracking.timeSpentSeconds
+        getOrDefault(issue.fields.timetracking, "timeSpentSeconds", 0)
     );
     setOutput("url", `https://${JIRA_BASE_URL}/browse/${issue.key}`);
 };
