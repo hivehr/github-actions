@@ -13,7 +13,7 @@ async function main() {
     await client.pulls.update({
         owner: context.repo.owner,
         repo: context.repo.repo,
-        pull_number: context.payload.pull_request.number,
+        pull_number: context.payload.pull_request!.number,
         title: inputs.title
     });
 }

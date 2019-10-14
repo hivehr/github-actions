@@ -63,6 +63,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
           "packageDependencies": [
             ["@actions/core", "npm:1.1.3"],
             ["@actions/github", "npm:1.1.0"],
+            ["@types/node", "npm:12.7.12"],
             ["@yarnpkg/pnpify", "virtual:42098df5d3357b125755cdf6b695ff8322aa3d08d4c647d87dc2cba6363c7295622de5d8b213796610c1fad1f0a44818600e1f43dea15d7562f51e101cb24112#npm:2.0.0-rc.6"],
             ["ts-node", "virtual:42098df5d3357b125755cdf6b695ff8322aa3d08d4c647d87dc2cba6363c7295622de5d8b213796610c1fad1f0a44818600e1f43dea15d7562f51e101cb24112#npm:8.4.1"],
             ["typescript", "npm:3.6.4"]
@@ -149,6 +150,14 @@ function $$SETUP_STATE(hydrateRuntimeState) {
             ["octokit-pagination-methods", "npm:1.1.0"],
             ["once", "npm:1.4.0"],
             ["universal-user-agent", "npm:4.0.0"]
+          ]
+        }]
+      ]],
+      ["@types/node", [
+        ["npm:12.7.12", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-12.7.12-36f53b6be9.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:12.7.12"]
           ]
         }]
       ]],
@@ -556,6 +565,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
             ["update-pr", "workspace:."],
             ["@actions/core", "npm:1.1.3"],
             ["@actions/github", "npm:1.1.0"],
+            ["@types/node", "npm:12.7.12"],
             ["@yarnpkg/pnpify", "virtual:42098df5d3357b125755cdf6b695ff8322aa3d08d4c647d87dc2cba6363c7295622de5d8b213796610c1fad1f0a44818600e1f43dea15d7562f51e101cb24112#npm:2.0.0-rc.6"],
             ["ts-node", "virtual:42098df5d3357b125755cdf6b695ff8322aa3d08d4c647d87dc2cba6363c7295622de5d8b213796610c1fad1f0a44818600e1f43dea15d7562f51e101cb24112#npm:8.4.1"],
             ["typescript", "npm:3.6.4"]
