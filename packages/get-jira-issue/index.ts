@@ -41,7 +41,7 @@ const main = async () => {
         issue = await client.issue.getIssue({
             issueKey
         });
-        debug(JSON.stringify(issue));
+        debug(JSON.stringify(issue, null, 2));
     } catch (e) {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
@@ -53,6 +53,10 @@ const main = async () => {
     setOutput("projectKey", issue.fields.project.key);
     setOutput("labels", issue.fields.labels.join(","));
     setOutput("creator", issue.fields.creator.emailAddress);
+    setOutput(
+        "timeSpent",
+        issue.fields.timeSpent.timetracking.timeSpentSeconds
+    );
     setOutput("url", `https://${JIRA_BASE_URL}/browse/${issue.key}`);
 };
 
