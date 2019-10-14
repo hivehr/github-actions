@@ -13,10 +13,16 @@ jobs:
     - uses: actions/checkout@v1
       
     - name: "[get-jira-issue] Build Docker image"
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.ref }}
       working-directory: packages/get-jira-issue
+      run: |
+        docker build . 
+          --file Dockerfile 
+          --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest
+          --tag docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
     
     - name: "[get-jira-issue] Push to Package Registry"
-      run: docker push docker.pkg.github.com/phanatic/repo/app:1.0.0
       working-directory: packages/get-jira-issue
+      run: |
+        docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:latest &&
+        docker push docker.pkg.github.com/hivehr/github-actions/get-jira-issue:${{ github.sha }}
       
