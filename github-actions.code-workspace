@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "packages/get-jira-issue"
+		},
+		{
+			"path": "packages/update-pr"
+		}
+    ],
+    "settings": {
+		"typescript.tsdk": "github-actions/packages/update-pr/.vscode/pnpify/typescript/lib",
+		"editor.formatOnSave": true
+    }
+}

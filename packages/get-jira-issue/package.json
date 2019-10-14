@@ -1,13 +1,15 @@
 {
     "name": "get-jira-issue",
-    "license": "UNLICENSED",
+    "description": "Retrieve a JIRA issues information",
     "private": true,
+    "license": "MIT",
+    "author": "Hive HR <engineering@hive.hr>",
     "main": "index.ts",
     "engines": {
         "node": "12"
     },
     "scripts": {
-        "start": "yarn pnpify ts-node src/index.ts",
+        "start": "yarn pnpify ts-node index.ts",
         "build": "yarn pnpify tsc -p .",
         "lint": "yarn build --noEmit"
     },
