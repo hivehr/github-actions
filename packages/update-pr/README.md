@@ -7,5 +7,6 @@ Takes in several inputs and updates the GitHub PR related to this action run wit
 ## Inputs
 
 ```bash
-title       # String to update the PR title to
+string      # The GITHUB_TOKEN secret
+title       # Title to update the PR title to
 ```
