@@ -18,6 +18,7 @@ LABEL "com.github.actions.outputs.key.description"="JIRA issue key"
 LABEL "com.github.actions.outputs.summary.description"="JIRA issue summary"
 LABEL "com.github.actions.outputs.status.description"="JIRA issue status"
 LABEL "com.github.actions.outputs.projectKey.description"="JIRA issue project key"
+LABEL "com.github.actions.outputs.labels.description"="JIRA issue labels, comma delimited"
 LABEL "com.github.actions.outputs.creator.description"="JIRA issue creators email"
 LABEL "com.github.actions.outputs.url.description"="JIRA issue URL"
 

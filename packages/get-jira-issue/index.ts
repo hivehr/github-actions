@@ -17,7 +17,7 @@ const getFirstMatchingGroup = (pattern: RegExp, title: string) => {
     const parts = pattern.exec(title);
     if (parts == null) {
         throw new Error(
-            `No valid JIRA issue found in given value: '${title}'. Did you forget to name it correctly?`
+            `No valid JIRA issue found in '${title}' that matches '${pattern.source}'. Did you forget to name it correctly?`
         );
     }
 
@@ -51,6 +51,7 @@ const main = async () => {
     setOutput("summary", issue.fields.summary);
     setOutput("status", issue.fields.status.name);
     setOutput("projectKey", issue.fields.project.key);
+    setOutput("labels", issue.fields.labels.join(","));
     setOutput("creator", issue.fields.creator.emailAddress);
     setOutput("url", `https://${JIRA_BASE_URL}/browse/${issue.key}`);
 };
