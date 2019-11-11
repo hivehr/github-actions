@@ -9,6 +9,9 @@
         {
             "path": "packages/update-pr"
         }
+        {
+            "path": "packages/dependency-checker"
+        }
     ],
     "settings": {
         "typescript.tsdk": "github-actions/packages/update-pr/.vscode/pnpify/typescript/lib",
