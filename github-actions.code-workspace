@@ -8,7 +8,7 @@
         },
         {
             "path": "packages/update-pr"
-        }
+        },
         {
             "path": "packages/dependency-checker"
         }
