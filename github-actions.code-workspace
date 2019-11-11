@@ -14,7 +14,7 @@
         }
     ],
     "settings": {
-        "typescript.tsdk": "github-actions/packages/update-pr/.vscode/pnpify/typescript/lib",
+        "typescript.tsdk": "github-actions/packages/dependency-checker/.vscode/pnpify/typescript/lib",
         "editor.formatOnSave": true,
         "search.exclude": {
             "**/node_modules": true,
