@@ -3,8 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "strict": true,
-    "esModuleInterop": true,
-    "typeRoots": ["./types"]
+    "esModuleInterop": true
   },
   "include": ["index.ts"]
 }
