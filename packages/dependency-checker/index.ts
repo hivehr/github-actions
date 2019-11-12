@@ -3,8 +3,12 @@ import { context, GitHub } from "@actions/github";
 import execa from "execa";
 
 const getDiff = async () => {
-  const { stdout } = await execa.command(
-    `git diff ${process.env.GITHUB_BASE_REF} ${process.env.GITHUB_HEAD_REF}`
+  const { stdout } = await execa(
+    `git diff ${process.env.GITHUB_BASE_REF} ${process.env.GITHUB_HEAD_REF}`,
+    null,
+    {
+      shell: true
+    }
   );
   console.log(stdout);
   //
