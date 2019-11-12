@@ -18,6 +18,7 @@
         "@actions/github": "1.1.0",
         "@types/node": "12.7.12",
         "@yarnpkg/pnpify": "2.0.0-rc.7",
+        "execa": "^3.2.0",
         "ts-node": "8.4.1",
         "typescript": "3.6.4"
     },
