@@ -3,6 +3,8 @@ import { context, GitHub } from "@actions/github";
 import execa from "execa";
 
 const getDiff = async () => {
+  console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
+  console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
   const { stdout } = await execa.command(
     `git diff ${process.env.GITHUB_BASE_REF} ${process.env.GITHUB_HEAD_REF}`,
     {
@@ -10,17 +12,16 @@ const getDiff = async () => {
     }
   );
   console.log(stdout);
-  //
 };
 
 async function main() {
-  const {
-    repo: { owner, repo },
-    payload: { pull_request }
-  } = context;
+  // const {
+  //   repo: { owner, repo },
+  //   payload: { pull_request }
+  // } = context;
 
   // 1. Setup GitHub client with the given GITHUB_TOKEN
-  const client = new GitHub(getInput("repo-token"));
+  // const client = new GitHub(getInput("repo-token"));
 
   await getDiff();
 

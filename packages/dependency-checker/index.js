@@ -35,37 +35,38 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@actions/core");
 var github_1 = require("@actions/github");
-var child_process_1 = require("child_process");
+var execa_1 = __importDefault(require("execa"));
+var getDiff = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var stdout;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, execa_1.default.command("git diff " + process.env.GITHUB_BASE_REF + " " + process.env.GITHUB_HEAD_REF, {
+                    shell: true
+                })];
+            case 1:
+                stdout = (_a.sent()).stdout;
+                console.log(stdout);
+                return [2 /*return*/];
+        }
+    });
+}); };
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, owner, repo, pull_request, client, commits;
+        var _a, owner, repo, pull_request, client;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     _a = github_1.context.repo, owner = _a.owner, repo = _a.repo, pull_request = github_1.context.payload.pull_request;
                     client = new github_1.GitHub(core_1.getInput("repo-token"));
-                    console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
-                    console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
-                    child_process_1.exec("git diff " + process.env.GITHUB_BASE_REF + " " + process.env.GITHUB_HEAD_REF, function (err, stdout, stderr) {
-                        if (err) {
-                            // node couldn't execute the command
-                            return;
-                        }
-                        // the *entire* stdout and stderr (buffered)
-                        console.log("stdout: " + stdout);
-                        console.log("stderr: " + stderr);
-                    });
-                    return [4 /*yield*/, client.pulls.listCommits({
-                            owner: owner,
-                            repo: repo,
-                            pull_number: pull_request.number
-                        })];
+                    return [4 /*yield*/, getDiff()];
                 case 1:
-                    commits = _b.sent();
-                    console.log(commits);
+                    _b.sent();
                     return [2 /*return*/];
             }
         });
