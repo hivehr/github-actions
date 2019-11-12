@@ -2,6 +2,16 @@ import { getInput, setFailed } from "@actions/core";
 import { context, GitHub } from "@actions/github";
 import execa from "execa";
 
+const getRemotes = async () => {
+  // 1. Add Universe as remote.
+  console.log("Running git remote -v");
+
+  const { stdout } = await execa.command(`git remote  -v`, {
+    shell: true
+  });
+  console.log("REMOTES:::::", stdout);
+};
+
 const addUniverseRemote = async () => {
   // 1. Add Universe as remote.
   console.log(
@@ -37,6 +47,8 @@ const removeUniverseRemote = async () => {
 const getDiff = async () => {
   console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
   console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
+
+  await getRemotes();
 
   // 1. Add Universe Remote to make diff work
   await addUniverseRemote();
