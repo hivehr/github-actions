@@ -1,6 +1,12 @@
 import { getInput, setFailed } from "@actions/core";
 import { context, GitHub } from "@actions/github";
-import { exec } from "child_process";
+import execa from "execa";
+
+const getDiff = async () => {
+  const { stdout } = await execa("echo", ["unicorns"]);
+  console.log(stdout);
+  // `git diff ${process.env.GITHUB_BASE_REF} ${process.env.GITHUB_HEAD_REF}`
+};
 
 async function main() {
   const {
@@ -13,19 +19,7 @@ async function main() {
   console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
   console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
 
-  exec(
-    `git diff ${process.env.GITHUB_BASE_REF} ${process.env.GITHUB_HEAD_REF}`,
-    (err, stdout, stderr) => {
-      if (err) {
-        // node couldn't execute the command
-        return;
-      }
-
-      // the *entire* stdout and stderr (buffered)
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    }
-  );
+  await getDiff();
 
   // 2. Check if any package.json files have changes
   // const files = await client.pulls.listFiles({
@@ -45,13 +39,13 @@ async function main() {
   // }
 
   // 5. Get a list of all the commits on the PR. (Do we care about this?)
-  const commits = await client.pulls.listCommits({
-    owner,
-    repo,
-    pull_number: pull_request!.number
-  });
+  // const commits = await client.pulls.listCommits({
+  //   owner,
+  //   repo,
+  //   pull_number: pull_request!.number
+  // });
 
-  console.log(commits);
+  // console.log(commits);
 
   // // 6. Locate the latest commit. (Do we care about this?)
   // const lastCommit = commits[commits.length - 1];
