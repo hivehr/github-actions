@@ -1,7 +1,10 @@
 import { debug, getInput, info, setFailed, setOutput } from "@actions/core";
 import Jira from "jira-connector";
-
-const { JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_USER_EMAIL } = process.env;
+import {
+    JIRA_BASE_URL,
+    JIRA_USER_EMAIL,
+    JIRA_API_TOKEN
+} from "./env";
 
 const getOrDefault = (obj: any, key: string, defaultValue: any) =>
     obj != null && obj[key] != null ? obj[key] : defaultValue;
