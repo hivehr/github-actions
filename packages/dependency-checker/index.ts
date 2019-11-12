@@ -13,7 +13,6 @@ const getRemotes = async () => {
 };
 
 const addUniverseRemote = async () => {
-  // 1. Add Universe as remote.
   console.log(
     "Running git remote add b https://github.com/hivehr/universe.git"
   );
@@ -24,19 +23,21 @@ const addUniverseRemote = async () => {
       shell: true
     }
   );
-  console.log("Running git remote update");
 
-  // 2. Update remote
+  return;
+};
+
+const updateRemotes = async () => {
+  console.log("Running git remote update");
   await execa.command(`git remote update`, {
     shell: true
   });
 
   return;
 };
-const removeUniverseRemote = async () => {
-  // 1. Add Universe as remote.
-  console.log("Running git remote rm b");
 
+const removeUniverseRemote = async () => {
+  console.log("Running git remote rm b");
   await execa.command(`git remote rm b`, {
     shell: true
   });
@@ -44,14 +45,41 @@ const removeUniverseRemote = async () => {
   return;
 };
 
+const splitIntoFiles = (stdout: string) => {
+  const files = stdout.split("diff --git ");
+
+  const parsedFiles = files.map(file => parseFile(file));
+
+  return parsedFiles;
+};
+
+const getFileName = (file: string) => {
+  const endOfLineIndex = file.search("\n");
+  const firstLineSections = file.substring(0, endOfLineIndex).split("/");
+
+  return firstLineSections[firstLineSections.length - 1];
+};
+
+const parseFile = (file: string) => {
+  const fileName = getFileName(file);
+
+  if (fileName === "yarn.lock") {
+    return {
+      fileName,
+      changes: file
+    };
+  }
+};
+
 const getDiff = async () => {
   console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
   console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
 
   await getRemotes();
+  await addUniverseRemote();
+  await updateRemotes();
 
   // 1. Add Universe Remote to make diff work
-  await addUniverseRemote();
   console.log(
     `Running git diff remotes/b/${process.env.GITHUB_BASE_REF} remotes/b/${process.env.GITHUB_HEAD_REF}`
   );
@@ -63,7 +91,9 @@ const getDiff = async () => {
     }
   );
 
-  console.log(stdout);
+  const files = splitIntoFiles(stdout);
+
+  console.log(files);
 
   // 3. Remove remote
   await removeUniverseRemote();
