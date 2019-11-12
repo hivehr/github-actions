@@ -2,16 +2,59 @@ import { getInput, setFailed } from "@actions/core";
 import { context, GitHub } from "@actions/github";
 import execa from "execa";
 
-const getDiff = async () => {
-  console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
-  console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
-  const { stdout } = await execa.command(
-    `git diff ${process.env.GITHUB_BASE_REF} ${process.env.GITHUB_HEAD_REF}`,
+const addUniverseRemote = async () => {
+  // 1. Add Universe as remote.
+  console.log(
+    "Running git remote add b https://github.com/hivehr/universe.git"
+  );
+
+  await execa.command(
+    `git remote add b https://github.com/hivehr/universe.git`,
     {
       shell: true
     }
   );
+  console.log("Running git remote update");
+
+  // 2. Update remote
+  await execa.command(`git remote update`, {
+    shell: true
+  });
+
+  return;
+};
+const removeUniverseRemote = async () => {
+  // 1. Add Universe as remote.
+  console.log("Running git remote rm b");
+
+  await execa.command(`git remote rm b`, {
+    shell: true
+  });
+
+  return;
+};
+
+const getDiff = async () => {
+  console.log("GITHUB_BASE_REF", process.env.GITHUB_BASE_REF);
+  console.log("GITHUB_HEAD_REF", process.env.GITHUB_HEAD_REF);
+
+  // 1. Add Universe Remote to make diff work
+  await addUniverseRemote();
+  console.log(
+    `Running git diff remotes/b/${process.env.GITHUB_BASE_REF} remotes/b/${process.env.GITHUB_HEAD_REF}`
+  );
+  // 2. Get Diff
+  const { stdout } = await execa.command(
+    `git diff remotes/b/${process.env.GITHUB_BASE_REF} remotes/b/${process.env.GITHUB_HEAD_REF}`,
+    {
+      shell: true
+    }
+  );
+
   console.log(stdout);
+
+  // 3. Remove remote
+  await removeUniverseRemote();
 };
 
 async function main() {
