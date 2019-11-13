@@ -25,12 +25,14 @@ const parseBody = (
     }
 
     let newBody = currentBody;
+    let newPrefix = prefix + "\n";
+    let newSuffix = "\n" + suffix;
 
-    if (prefix != null && prefix !== "" && !newBody.startsWith(prefix)) {
-        newBody = prefix + newBody;
+    if (newPrefix != null && newPrefix !== "" && !newBody.startsWith(newPrefix)) {
+        newBody = newPrefix + newBody;
     }
-    if (suffix != null && suffix !== "" && !newBody.endsWith(suffix)) {
-        newBody += suffix;
+    if (newSuffix != null && newSuffix !== "" && !newBody.endsWith(newSuffix)) {
+        newBody += newSuffix;
     }
 
     return newBody;
