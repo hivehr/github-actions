@@ -1,14 +1,11 @@
-import { debug, getInput, info, setFailed, setOutput } from "@actions/core";
+import { debug, getInput, setFailed } from "@actions/core";
 import Jira from "jira-connector";
-import { JIRA_BASE_URL, JIRA_USER_EMAIL, JIRA_API_TOKEN } from "./env";
+import { JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_USER_EMAIL } from "./env";
 
 interface Transition {
     id: string;
     name: string;
 }
-
-const getOrDefault = (obj: any, key: string, defaultValue: any) =>
-    obj != null && obj[key] != null ? obj[key] : defaultValue;
 
 const jiraFactory = () =>
     new Jira({
