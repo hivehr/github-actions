@@ -4,8 +4,8 @@ LABEL "name"="Transition JIRA Issue"
 LABEL "maintainer"="Hive HR <engineering@hive.hr>"
 LABEL "version"="1.0.0"
 
-LABEL "com.github.actions.name"="Get JIRA Issue"
-LABEL "com.github.actions.description"="Retrieve a JIRA issues information"
+LABEL "com.github.actions.name"="Transition JIRA Issue"
+LABEL "com.github.actions.description"="Transitions a JIRA issue to a given transition name, with optional status checks"
 LABEL "com.github.actions.branding.icon"="check-square"
 LABEL "com.github.actions.branding.color"="blue"
 
