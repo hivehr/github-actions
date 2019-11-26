@@ -1,4 +1,4 @@
-export const { JIRA_ISSUE_ID, JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_USER_EMAIL } = process.env;
+export const { JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_USER_EMAIL } = process.env;
 
 Object.entries({
     JIRA_API_TOKEN,
