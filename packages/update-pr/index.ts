@@ -28,10 +28,10 @@ const parseBody = (
     let newPrefix = prefix + "\n";
     let newSuffix = "\n" + suffix;
 
-    if (newPrefix != null && newPrefix !== "" && !newBody.startsWith(newPrefix)) {
+    if (newPrefix != null && newPrefix !== "" && !newBody.startsWith(prefix)) {
         newBody = newPrefix + newBody;
     }
-    if (newSuffix != null && newSuffix !== "" && !newBody.endsWith(newSuffix)) {
+    if (newSuffix != null && newSuffix !== "" && !newBody.endsWith(suffix)) {
         newBody += newSuffix;
     }
 
