@@ -49,12 +49,12 @@ const main = async () => {
     }
 
     // Set outputs
-    setOutput("key", issue.key);
-    setOutput("summary", issue.fields.summary);
-    setOutput("status", issue.fields.status.name);
-    setOutput("projectKey", issue.fields.project.key);
-    setOutput("labels", issue.fields.labels.join(","));
-    setOutput("creator", issue.fields.creator.emailAddress);
+    setOutput("key", issue.key ?? "");
+    setOutput("summary", issue.fields.summary ?? "");
+    setOutput("status", issue.fields.status.name ?? "");
+    setOutput("projectKey", issue.fields.project.key ?? "");
+    setOutput("labels", issue.fields.labels.join(",") ?? "");
+    setOutput("creator", issue.fields.creator.emailAddress ?? "");
     setOutput(
         "timeSpent",
         getOrDefault(issue.fields.timetracking, "timeSpentSeconds", "0")
