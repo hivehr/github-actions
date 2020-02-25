@@ -11,6 +11,9 @@
     },
     {
       "path": "packages/transition-jira-issue"
+    },
+    {
+      "path": "packages/image-actions"
     }
   ],
   "settings": {

@@ -1,0 +1,27 @@
+name: image-actions
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/image-actions/*"
+      - ".github/workflows/image-actions.yml"
+
+jobs:
+  build:
+    name: docker build + push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - shell: bash
+        run: git submodule sync --recursive
+
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/image-actions
+          registry: docker.pkg.github.com
+          image_name: hivehr/github-actions/image-actions
+          image_tag: latest
+          username: "${{ github.actor }}"
+          password: "${{ secrets.GITHUB_TOKEN }}"
