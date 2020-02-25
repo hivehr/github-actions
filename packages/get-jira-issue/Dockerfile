@@ -28,7 +28,7 @@ WORKDIR /app
 COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
 
-RUN time yarn install--frozen-lockfile --no-cache --production=false
+RUN time yarn install --frozen-lockfile --no-cache --production=false
 COPY . .
 
 ENTRYPOINT ["yarn", "start"]
