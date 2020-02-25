@@ -17,9 +17,11 @@ LABEL "com.github.actions.inputs.from.description"="Comma separated statuses tha
 LABEL "com.github.actions.inputs.from.required"="true"
 
 WORKDIR /app
+
 COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
+
 RUN time yarn install--frozen-lockfile --no-cache --production=false
 COPY . .
 
-ENTRYPOINT /bin/sh -c "cd /app && yarn run start"
+ENTRYPOINT ["yarn", "start"]

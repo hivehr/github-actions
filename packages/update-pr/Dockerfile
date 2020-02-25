@@ -18,9 +18,11 @@ LABEL "com.github.actions.inputs.prefixBody.description"="Text to prefix the cur
 LABEL "com.github.actions.inputs.suffixBody.description"="Text to suffix the current PR body with"
 
 WORKDIR /app
+
 COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
+
 RUN time yarn install--frozen-lockfile --no-cache --production=false
 COPY . .
 
-ENTRYPOINT /bin/sh -c "cd /app && yarn run start"
+ENTRYPOINT ["yarn", "start"]

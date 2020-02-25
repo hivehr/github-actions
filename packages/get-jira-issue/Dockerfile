@@ -24,9 +24,11 @@ LABEL "com.github.actions.outputs.creator.description"="JIRA issue creators emai
 LABEL "com.github.actions.outputs.url.description"="JIRA issue URL"
 
 WORKDIR /app
+
 COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
+
 RUN time yarn install--frozen-lockfile --no-cache --production=false
 COPY . .
 
-ENTRYPOINT /bin/sh -c "cd /app && yarn run start"
+ENTRYPOINT ["yarn", "start"]
