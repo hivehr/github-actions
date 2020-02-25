@@ -1,0 +1,23 @@
+name: get-jira-issue
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/get-jira-issue/*"
+      - ".github/workflows/get-jira-issue.yml"
+
+jobs:
+  build:
+    name: Build docker image (with cache) and push it to registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/get-jira-issue
+          registry: docker.pkg.github.com
+          image_name: hivehr/github-actions/get-jira-issue
+          image_tag: latest
+          username: "${{ secrets.DOCKER_USERNAME }}"
+          password: "${{ secrets.DOCKER_PASSWORD }}"
