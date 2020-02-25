@@ -59,12 +59,13 @@ const main = async () => {
 
     let transitions: Transition[];
     try {
-        transitions = (await client.issue.getTransitions({
-            issueKey
-        })).transitions;
+        transitions = (
+            await client.issue.getTransitions({
+                issueKey
+            })
+        ).transitions;
         console.log(JSON.stringify(transitions, null, 2));
-    }
-    catch (e) {
+    } catch (e) {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
 
@@ -75,7 +76,10 @@ const main = async () => {
     );
 
     if (!toTransition) {
-        console.log("Transition not available from this state. Possible transitions: ", transitions.map((id) => id));
+        console.log(
+            "Transition not available from this state. Possible transitions: ",
+            transitions.map(id => id)
+        );
         return;
     }
 
@@ -89,8 +93,7 @@ const main = async () => {
             }
         });
         debug(result);
-    }
-    catch (e) {
+    } catch (e) {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
 
@@ -104,7 +107,7 @@ if (require.main === module) {
             process.exit(0);
         } catch (err) {
             setFailed(err.message);
-            process.exit(1);
+            throw err;
         }
     })();
 }

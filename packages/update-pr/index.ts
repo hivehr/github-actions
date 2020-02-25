@@ -115,7 +115,7 @@ if (require.main === module) {
             process.exit(0);
         } catch (err) {
             setFailed(err.message);
-            process.exit(1);
+            throw err;
         }
     })();
 }

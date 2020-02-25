@@ -1,10 +1,6 @@
 import { debug, getInput, info, setFailed, setOutput } from "@actions/core";
 import Jira from "jira-connector";
-import {
-    JIRA_BASE_URL,
-    JIRA_USER_EMAIL,
-    JIRA_API_TOKEN
-} from "./env";
+import { JIRA_BASE_URL, JIRA_USER_EMAIL, JIRA_API_TOKEN } from "./env";
 
 const getOrDefault = (obj: any, key: string, defaultValue: any) =>
     obj != null && obj[key] != null ? obj[key] : defaultValue;
@@ -73,7 +69,7 @@ if (require.main === module) {
             process.exit(0);
         } catch (err) {
             setFailed(err.message);
-            process.exit(1);
+            throw err;
         }
     })();
 }
