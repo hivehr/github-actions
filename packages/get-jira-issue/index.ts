@@ -57,7 +57,7 @@ const main = async () => {
     setOutput("creator", issue.fields.creator.emailAddress);
     setOutput(
         "timeSpent",
-        getOrDefault(issue.fields.timetracking, "timeSpentSeconds", 0)
+        getOrDefault(issue.fields.timetracking, "timeSpentSeconds", "0")
     );
     setOutput("url", `https://${JIRA_BASE_URL}/browse/${issue.key}`);
 };
