@@ -1,23 +1,24 @@
 {
-  "name": "update-pr",
-  "description": "Sets various GitHub PR settings",
-  "private": true,
-  "license": "MIT",
-  "author": "Hive HR <engineering@hive.hr>",
-  "main": "index.ts",
-  "engines": {
-    "node": "12"
-  },
-  "scripts": {
-    "start": "yarn ts-node index.ts",
-    "build": "yarn tsc -p .",
-    "lint": "yarn build --noEmit"
-  },
-  "dependencies": {
-    "@actions/core": "1.2.2",
-    "@actions/github": "2.1.1",
-    "@types/node": "13.7.4",
-    "ts-node": "8.6.2",
-    "typescript": "3.8.2"
-  }
+    "name": "update-pr",
+    "description": "Sets various GitHub PR settings",
+    "private": true,
+    "license": "MIT",
+    "author": "Hive HR <engineering@hive.hr>",
+    "main": "lib/index.js",
+    "engines": {
+        "node": "12"
+    },
+    "scripts": {
+        "start": "node lib/index.js",
+        "dev": "yarn ts-node index.ts",
+        "build": "yarn tsc -p .",
+        "lint": "exit 0"
+    },
+    "dependencies": {
+        "@actions/core": "1.2.2",
+        "@actions/github": "2.1.1",
+        "@types/node": "13.7.4",
+        "ts-node": "8.6.2",
+        "typescript": "3.8.2"
+    }
 }
