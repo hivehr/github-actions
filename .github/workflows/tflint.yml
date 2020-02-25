@@ -1,0 +1,23 @@
+name: tflint
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/tflint/*"
+      - ".github/workflows/tflint.yml"
+
+jobs:
+  build:
+    name: docker build + push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/tflint
+          registry: docker.pkg.github.com
+          image_name: hivehr/github-actions/tflint
+          image_tag: latest
+          username: "${{ github.actor }}"
+          password: "${{ secrets.GITHUB_TOKEN }}"
