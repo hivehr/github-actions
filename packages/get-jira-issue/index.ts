@@ -5,6 +5,14 @@ import { JIRA_BASE_URL, JIRA_USER_EMAIL, JIRA_API_TOKEN } from "./env";
 const getOrDefault = (obj: any, key: string, defaultValue: any) =>
     obj != null && obj[key] != null ? obj[key] : defaultValue;
 
+const toString = (value: any) => {
+    if (value == null) {
+        return "";
+    }
+
+    return String(value);
+};
+
 const jiraFactory = () =>
     new Jira({
         host: JIRA_BASE_URL!,
@@ -48,18 +56,27 @@ const main = async () => {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
 
+    // Generate outputs
+    const outputs = {
+        key: issue.key,
+        summary: issue.fields.summary,
+        status: issue.fields.status.name,
+        projectKey: issue.fields.project.key,
+        labels: issue.fields.labels.join(","),
+        creator: issue.fields.creator.emailAddress,
+        timeSpent: getOrDefault(
+            issue.fields.timetracking,
+            "timeSpentSeconds",
+            "0"
+        ),
+        url: `https://${JIRA_BASE_URL}/browse/${issue.key}`
+    };
+    info("Outputs:\n" + JSON.stringify(outputs, null, 2));
+
     // Set outputs
-    setOutput("key", issue.key);
-    setOutput("summary", issue.fields.summary);
-    setOutput("status", issue.fields.status.name);
-    setOutput("projectKey", issue.fields.project.key);
-    setOutput("labels", issue.fields.labels.join(","));
-    setOutput("creator", issue.fields.creator.emailAddress);
-    setOutput(
-        "timeSpent",
-        getOrDefault(issue.fields.timetracking, "timeSpentSeconds", "0")
+    Object.entries(outputs).forEach(([key, value]) =>
+        setOutput(key, value != null ? toString(value) : "")
     );
-    setOutput("url", `https://${JIRA_BASE_URL}/browse/${issue.key}`);
 };
 
 if (require.main === module) {
