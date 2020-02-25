@@ -1,10 +1,10 @@
 FROM node:12.16.1-alpine
 
-LABEL "name"="Update PR"
+LABEL "name"="Update GitHub PR"
 LABEL "maintainer"="Hive HR <engineering@hive.hr>"
 LABEL "version"="1.0.0"
 
-LABEL "com.github.actions.name"="Get JIRA Issue"
+LABEL "com.github.actions.name"="Update GitHub PR"
 LABEL "com.github.actions.description"="Retrieve a JIRA issues information"
 LABEL "com.github.actions.branding.icon"="check-square"
 LABEL "com.github.actions.branding.color"="blue"
