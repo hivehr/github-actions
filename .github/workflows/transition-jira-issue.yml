@@ -1,11 +1,11 @@
-name: get-jira-issue
+name: transition-jira-issue
 on:
   push:
     branches:
       - master
     paths:
-      - "packages/get-jira-issue/*"
-      - ".github/workflows/get-jira-issue.yml"
+      - "packages/transition-jira-issue/*"
+      - ".github/workflows/transition-jira-issue.yml"
 
 jobs:
   build:
@@ -15,9 +15,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: whoan/docker-build-with-cache-action@master
         with:
-          context: packages/get-jira-issue
+          context: packages/transition-jira-issue
           registry: docker.pkg.github.com
-          image_name: hivehr/github-actions/get-jira-issue
+          image_name: hivehr/github-actions/transition-jira-issue
           image_tag: latest
           username: "${{ github.actor }}"
           password: "${{ secrets.GITHUB_TOKEN }}"

@@ -1,11 +1,11 @@
-name: get-jira-issue
+name: update-pr
 on:
   push:
     branches:
       - master
     paths:
-      - "packages/get-jira-issue/*"
-      - ".github/workflows/get-jira-issue.yml"
+      - "packages/update-pr/*"
+      - ".github/workflows/update-pr.yml"
 
 jobs:
   build:
@@ -15,9 +15,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: whoan/docker-build-with-cache-action@master
         with:
-          context: packages/get-jira-issue
+          context: packages/update-pr
           registry: docker.pkg.github.com
-          image_name: hivehr/github-actions/get-jira-issue
+          image_name: hivehr/github-actions/update-pr
           image_tag: latest
           username: "${{ github.actor }}"
           password: "${{ secrets.GITHUB_TOKEN }}"
