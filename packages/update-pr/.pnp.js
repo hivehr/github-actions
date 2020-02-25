@@ -60,18 +60,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@actions/github", "npm:1.1.0"],
             ["@octokit/graphql", "npm:2.1.3"],
-            ["@octokit/rest", "npm:16.33.1"]
+            ["@octokit/rest", "npm:16.43.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@octokit/auth-token", [
+        ["npm:2.4.0", {
+          "packageLocation": "./.yarn/cache/@octokit-auth-token-npm-2.4.0-6817ec03e3-2.zip/node_modules/@octokit/auth-token/",
+          "packageDependencies": [
+            ["@octokit/auth-token", "npm:2.4.0"],
+            ["@octokit/types", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["@octokit/endpoint", [
-        ["npm:5.4.1", {
-          "packageLocation": "./.yarn/cache/@octokit-endpoint-npm-5.4.1-7a9830927a-2.zip/node_modules/@octokit/endpoint/",
+        ["npm:5.5.3", {
+          "packageLocation": "./.yarn/cache/@octokit-endpoint-npm-5.5.3-16863647d7-2.zip/node_modules/@octokit/endpoint/",
           "packageDependencies": [
-            ["@octokit/endpoint", "npm:5.4.1"],
+            ["@octokit/endpoint", "npm:5.5.3"],
+            ["@octokit/types", "npm:2.2.0"],
             ["is-plain-object", "npm:3.0.0"],
-            ["universal-user-agent", "npm:4.0.0"]
+            ["universal-user-agent", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -81,33 +92,65 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@octokit-graphql-npm-2.1.3-6829bd9c73-2.zip/node_modules/@octokit/graphql/",
           "packageDependencies": [
             ["@octokit/graphql", "npm:2.1.3"],
-            ["@octokit/request", "npm:5.2.1"],
+            ["@octokit/request", "npm:5.3.2"],
             ["universal-user-agent", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
-      ["@octokit/request", [
-        ["npm:5.2.1", {
-          "packageLocation": "./.yarn/cache/@octokit-request-npm-5.2.1-9f0e3bfc3d-2.zip/node_modules/@octokit/request/",
+      ["@octokit/plugin-paginate-rest", [
+        ["npm:1.1.2", {
+          "packageLocation": "./.yarn/cache/@octokit-plugin-paginate-rest-npm-1.1.2-b0b3e646dc-2.zip/node_modules/@octokit/plugin-paginate-rest/",
           "packageDependencies": [
-            ["@octokit/request", "npm:5.2.1"],
-            ["@octokit/endpoint", "npm:5.4.1"],
-            ["@octokit/request-error", "npm:1.0.4"],
+            ["@octokit/plugin-paginate-rest", "npm:1.1.2"],
+            ["@octokit/types", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@octokit/plugin-request-log", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/@octokit-plugin-request-log-npm-1.0.0-b6c4a34e91-2.zip/node_modules/@octokit/plugin-request-log/",
+          "packageDependencies": [
+            ["@octokit/plugin-request-log", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@octokit/plugin-rest-endpoint-methods", [
+        ["npm:2.4.0", {
+          "packageLocation": "./.yarn/cache/@octokit-plugin-rest-endpoint-methods-npm-2.4.0-c786d75f5b-2.zip/node_modules/@octokit/plugin-rest-endpoint-methods/",
+          "packageDependencies": [
+            ["@octokit/plugin-rest-endpoint-methods", "npm:2.4.0"],
+            ["@octokit/types", "npm:2.2.0"],
+            ["deprecation", "npm:2.3.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@octokit/request", [
+        ["npm:5.3.2", {
+          "packageLocation": "./.yarn/cache/@octokit-request-npm-5.3.2-968f9d2faf-2.zip/node_modules/@octokit/request/",
+          "packageDependencies": [
+            ["@octokit/request", "npm:5.3.2"],
+            ["@octokit/endpoint", "npm:5.5.3"],
+            ["@octokit/request-error", "npm:1.2.1"],
+            ["@octokit/types", "npm:2.2.0"],
             ["deprecation", "npm:2.3.1"],
             ["is-plain-object", "npm:3.0.0"],
             ["node-fetch", "npm:2.6.0"],
             ["once", "npm:1.4.0"],
-            ["universal-user-agent", "npm:4.0.0"]
+            ["universal-user-agent", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["@octokit/request-error", [
-        ["npm:1.0.4", {
-          "packageLocation": "./.yarn/cache/@octokit-request-error-npm-1.0.4-0dc83cd265-2.zip/node_modules/@octokit/request-error/",
+        ["npm:1.2.1", {
+          "packageLocation": "./.yarn/cache/@octokit-request-error-npm-1.2.1-0af51a468f-2.zip/node_modules/@octokit/request-error/",
           "packageDependencies": [
-            ["@octokit/request-error", "npm:1.0.4"],
+            ["@octokit/request-error", "npm:1.2.1"],
+            ["@octokit/types", "npm:2.2.0"],
             ["deprecation", "npm:2.3.1"],
             ["once", "npm:1.4.0"]
           ],
@@ -115,12 +158,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@octokit/rest", [
-        ["npm:16.33.1", {
-          "packageLocation": "./.yarn/cache/@octokit-rest-npm-16.33.1-e58f4724e1-2.zip/node_modules/@octokit/rest/",
+        ["npm:16.43.1", {
+          "packageLocation": "./.yarn/cache/@octokit-rest-npm-16.43.1-3451b48d94-2.zip/node_modules/@octokit/rest/",
           "packageDependencies": [
-            ["@octokit/rest", "npm:16.33.1"],
-            ["@octokit/request", "npm:5.2.1"],
-            ["@octokit/request-error", "npm:1.0.4"],
+            ["@octokit/rest", "npm:16.43.1"],
+            ["@octokit/auth-token", "npm:2.4.0"],
+            ["@octokit/plugin-paginate-rest", "npm:1.1.2"],
+            ["@octokit/plugin-request-log", "npm:1.0.0"],
+            ["@octokit/plugin-rest-endpoint-methods", "npm:2.4.0"],
+            ["@octokit/request", "npm:5.3.2"],
+            ["@octokit/request-error", "npm:1.2.1"],
             ["atob-lite", "npm:2.0.0"],
             ["before-after-hook", "npm:2.1.0"],
             ["btoa-lite", "npm:1.0.0"],
@@ -130,7 +177,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash.uniq", "npm:4.5.0"],
             ["octokit-pagination-methods", "npm:1.1.0"],
             ["once", "npm:1.4.0"],
-            ["universal-user-agent", "npm:4.0.0"]
+            ["universal-user-agent", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@octokit/types", [
+        ["npm:2.2.0", {
+          "packageLocation": "./.yarn/cache/@octokit-types-npm-2.2.0-ccacb4a8d1-2.zip/node_modules/@octokit/types/",
+          "packageDependencies": [
+            ["@octokit/types", "npm:2.2.0"],
+            ["@types/node", "npm:12.7.12"]
           ],
           "linkType": "HARD",
         }]
@@ -183,10 +240,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["arg", [
-        ["npm:4.1.1", {
-          "packageLocation": "./.yarn/cache/arg-npm-4.1.1-105ad21e85-2.zip/node_modules/arg/",
+        ["npm:4.1.3", {
+          "packageLocation": "./.yarn/cache/arg-npm-4.1.3-1748b966a8-2.zip/node_modules/arg/",
           "packageDependencies": [
-            ["arg", "npm:4.1.1"]
+            ["arg", "npm:4.1.3"]
           ],
           "linkType": "HARD",
         }]
@@ -251,10 +308,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["diff", [
-        ["npm:4.0.1", {
-          "packageLocation": "./.yarn/cache/diff-npm-4.0.1-4d86a500e8-2.zip/node_modules/diff/",
+        ["npm:4.0.2", {
+          "packageLocation": "./.yarn/cache/diff-npm-4.0.2-73133c7102-2.zip/node_modules/diff/",
           "packageDependencies": [
-            ["diff", "npm:4.0.1"]
+            ["diff", "npm:4.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -379,10 +436,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["make-error", [
-        ["npm:1.3.5", {
-          "packageLocation": "./.yarn/cache/make-error-npm-1.3.5-be4b06e941-2.zip/node_modules/make-error/",
+        ["npm:1.3.6", {
+          "packageLocation": "./.yarn/cache/make-error-npm-1.3.6-ccb85d9458-2.zip/node_modules/make-error/",
           "packageDependencies": [
-            ["make-error", "npm:1.3.5"]
+            ["make-error", "npm:1.3.6"]
           ],
           "linkType": "HARD",
         }]
@@ -539,10 +596,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["source-map-support", [
-        ["npm:0.5.13", {
-          "packageLocation": "./.yarn/cache/source-map-support-npm-0.5.13-377dfd7321-2.zip/node_modules/source-map-support/",
+        ["npm:0.5.16", {
+          "packageLocation": "./.yarn/cache/source-map-support-npm-0.5.16-cbb8823949-2.zip/node_modules/source-map-support/",
           "packageDependencies": [
-            ["source-map-support", "npm:0.5.13"],
+            ["source-map-support", "npm:0.5.16"],
             ["buffer-from", "npm:1.1.1"],
             ["source-map", "npm:0.6.1"]
           ],
@@ -573,10 +630,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/ts-node-virtual-e7ba00dde2/0/cache/ts-node-npm-8.4.1-111eca9312-2.zip/node_modules/ts-node/",
           "packageDependencies": [
             ["ts-node", "virtual:42098df5d3357b125755cdf6b695ff8322aa3d08d4c647d87dc2cba6363c7295622de5d8b213796610c1fad1f0a44818600e1f43dea15d7562f51e101cb24112#npm:8.4.1"],
-            ["arg", "npm:4.1.1"],
-            ["diff", "npm:4.0.1"],
-            ["make-error", "npm:1.3.5"],
-            ["source-map-support", "npm:0.5.13"],
+            ["arg", "npm:4.1.3"],
+            ["diff", "npm:4.0.2"],
+            ["make-error", "npm:1.3.6"],
+            ["source-map-support", "npm:0.5.16"],
             ["typescript", "patch:typescript@npm%3A3.6.4#builtin<compat/typescript>::version=3.6.4&hash=273569"],
             ["yn", "npm:3.1.1"]
           ],
@@ -604,10 +661,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:4.0.0", {
-          "packageLocation": "./.yarn/cache/universal-user-agent-npm-4.0.0-9b1bcfcf6a-2.zip/node_modules/universal-user-agent/",
+        ["npm:4.0.1", {
+          "packageLocation": "./.yarn/cache/universal-user-agent-npm-4.0.1-d1d67caaeb-2.zip/node_modules/universal-user-agent/",
           "packageDependencies": [
-            ["universal-user-agent", "npm:4.0.0"],
+            ["universal-user-agent", "npm:4.0.1"],
+            ["os-name", "npm:3.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/universal-user-agent-npm-5.0.0-0ce9f496f4-2.zip/node_modules/universal-user-agent/",
+          "packageDependencies": [
+            ["universal-user-agent", "npm:5.0.0"],
             ["os-name", "npm:3.1.0"]
           ],
           "linkType": "HARD",

@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:12.16.1-alpine
 
 LABEL "name"="Get JIRA Issue"
 LABEL "maintainer"="Hive HR <engineering@hive.hr>"
