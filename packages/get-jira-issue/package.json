@@ -9,8 +9,8 @@
     "node": "12"
   },
   "scripts": {
-    "start": "yarn pnpify ts-node --transpile-only index.ts",
-    "build": "yarn pnpify tsc -p .",
+    "start": "yarn ts-node --transpile-only index.ts",
+    "build": "yarn tsc -p .",
     "lint": "yarn build --noEmit"
   },
   "dependencies": {
