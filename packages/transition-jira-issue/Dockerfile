@@ -19,7 +19,7 @@ LABEL "com.github.actions.inputs.from.required"="true"
 WORKDIR /app
 COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
-RUN time yarn install --immutable --immutable-cache --inline-builds
+RUN time yarn install--frozen-lockfile --no-cache --production=false
 COPY . .
 
 ENTRYPOINT /bin/sh -c "cd /app && yarn run start"
