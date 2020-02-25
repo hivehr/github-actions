@@ -1,23 +1,26 @@
 {
-    "folders": [
-        {
-            "path": "."
-        },
-        {
-            "path": "packages/get-jira-issue"
-        },
-        {
-            "path": "packages/update-pr"
-        }
-    ],
-    "settings": {
-        "typescript.tsdk": "packages/transition-jira-issue/.vscode/pnpify/typescript/lib",
-        "editor.formatOnSave": true,
-        "search.exclude": {
-            "**/node_modules": true,
-            "**/bower_components": true,
-            "**/.yarn/releases/**/*": true,
-            "**/.yarn/cache/**/*": true
-        }
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "packages/get-jira-issue"
+    },
+    {
+      "path": "packages/update-pr"
+    },
+    {
+      "path": "packages/transition-jira-issue"
     }
+  ],
+  "settings": {
+    "typescript.tsdk": "packages/transition-jira-issue/.vscode/pnpify/typescript/lib",
+    "editor.formatOnSave": true,
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/.yarn/releases/**/*": true,
+      "**/.yarn/cache/**/*": true
+    }
+  }
 }
