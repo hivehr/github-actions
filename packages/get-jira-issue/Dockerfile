@@ -31,4 +31,4 @@ COPY .yarn .yarn
 RUN time yarn install --frozen-lockfile --no-cache --production=false
 COPY . .
 
-ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT /bin/sh -c "cd /app && yarn start"
