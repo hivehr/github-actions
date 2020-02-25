@@ -1,4 +1,4 @@
-FROM alpine:3.9.5
+FROM alpine:3.11.3
 ARG VERSION=0.11.2
 
 LABEL "name"="terraform-lint"
