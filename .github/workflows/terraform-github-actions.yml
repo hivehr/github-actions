@@ -16,7 +16,7 @@ jobs:
 
       # Checkout submodule code
       - name: git submodule sync --recursive
-      - shell: bash
+        shell: bash
         run: |
           auth_header="$(git config --local --get http.https://github.com/.extraheader)"
           git submodule sync --recursive
