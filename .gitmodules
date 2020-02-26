@@ -1,6 +1,6 @@
-[submodule "packages/get-jira-issue/packages/image-actions"]
-	path = packages/get-jira-issue/packages/image-actions
-	url = https://github.com/calibreapp/image-actions.git
 [submodule "packages/image-actions"]
 	path = packages/image-actions
 	url = https://github.com/calibreapp/image-actions.git
+[submodule "packages/terraform-github-actions"]
+	path = packages/terraform-github-actions
+	url = https://github.com/hashicorp/terraform-github-actions
