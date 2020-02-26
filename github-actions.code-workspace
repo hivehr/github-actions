@@ -1,29 +1,32 @@
 {
-  "folders": [
-    {
-      "path": "."
-    },
-    {
-      "path": "packages/get-jira-issue"
-    },
-    {
-      "path": "packages/update-pr"
-    },
-    {
-      "path": "packages/transition-jira-issue"
-    },
-    {
-      "path": "packages/image-actions"
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "packages/get-jira-issue"
+        },
+        {
+            "path": "packages/update-pr"
+        },
+        {
+            "path": "packages/transition-jira-issue"
+        },
+        {
+            "path": "packages/image-actions"
+        },
+        {
+            "path": "packages/tflint"
+        }
+    ],
+    "settings": {
+        "typescript.tsdk": "packages/transition-jira-issue/.vscode/pnpify/typescript/lib",
+        "editor.formatOnSave": true,
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/bower_components": true,
+            "**/.yarn/releases/**/*": true,
+            "**/.yarn/cache/**/*": true
+        }
     }
-  ],
-  "settings": {
-    "typescript.tsdk": "packages/transition-jira-issue/.vscode/pnpify/typescript/lib",
-    "editor.formatOnSave": true,
-    "search.exclude": {
-      "**/node_modules": true,
-      "**/bower_components": true,
-      "**/.yarn/releases/**/*": true,
-      "**/.yarn/cache/**/*": true
-    }
-  }
 }
