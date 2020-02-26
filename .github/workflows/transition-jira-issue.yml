@@ -29,7 +29,7 @@ jobs:
         uses: whoan/docker-build-with-cache-action@master
         with:
           context: packages/transition-jira-issue
-          image_name: hivehr/github-actions/trpackages/transition-jira-issue
+          image_name: hivehr/github-actions-transition-jira-issue
           image_tag: latest
           username: "${{ secrets.DOCKERHUB_USERNAME }}"
           password: "${{ secrets.DOCKERHUB_TOKEN }}"

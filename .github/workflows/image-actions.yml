@@ -39,7 +39,7 @@ jobs:
         uses: whoan/docker-build-with-cache-action@master
         with:
           context: packages/image-actions
-          image_name: hivehr/github-actions/image-actions
+          image_name: hivehr/github-actions-image-actions
           image_tag: latest
           username: "${{ secrets.DOCKERHUB_USERNAME }}"
           password: "${{ secrets.DOCKERHUB_TOKEN }}"

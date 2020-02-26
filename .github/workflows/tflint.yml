@@ -29,7 +29,7 @@ jobs:
         uses: whoan/docker-build-with-cache-action@master
         with:
           context: packages/tflint
-          image_name: hivehr/github-actions/tflint
+          image_name: hivehr/github-actions-tflint
           image_tag: latest
           username: "${{ secrets.DOCKERHUB_USERNAME }}"
           password: "${{ secrets.DOCKERHUB_TOKEN }}"
