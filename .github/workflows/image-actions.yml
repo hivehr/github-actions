@@ -24,15 +24,15 @@ jobs:
       - shell: bash
         run: sed -i 's/ubuntu:cosmic/ubuntu:xenial/g' packages/image-actions/Dockerfile
 
-      - name: GitHub registry build + push
-        uses: whoan/docker-build-with-cache-action@master
-        with:
-          context: packages/image-actions
-          registry: docker.pkg.github.com
-          image_name: hivehr/github-actions/image-actions
-          image_tag: latest
-          username: "${{ github.actor }}"
-          password: "${{ secrets.GITHUB_TOKEN }}"
+      # - name: GitHub registry build + push
+      #   uses: whoan/docker-build-with-cache-action@master
+      #   with:
+      #     context: packages/image-actions
+      #     registry: docker.pkg.github.com
+      #     image_name: hivehr/github-actions/image-actions
+      #     image_tag: latest
+      #     username: "${{ github.actor }}"
+      #     password: "${{ secrets.GITHUB_TOKEN }}"
 
       # TODO: Remove once we can use GitHub Registry images in Actions
       - name: DockerHub registry build + push
