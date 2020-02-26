@@ -17,6 +17,9 @@
         },
         {
             "path": "packages/tflint"
+        },
+        {
+            "path": "packages/terraform-github-actions"
         }
     ],
     "settings": {
