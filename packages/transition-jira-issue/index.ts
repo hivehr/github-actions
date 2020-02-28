@@ -48,12 +48,11 @@ const main = async () => {
         );
 
         if (!validStatus) {
-            console.log(
+            throw new Error(
                 `JIRA issue ${issueKey} is not in one of the required statuses (${fromStatuses.join(
                     ", "
                 )}) for this transition`
             );
-            return;
         }
     }
 
