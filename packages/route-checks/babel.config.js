@@ -1,12 +1,16 @@
+const { join } = require("path");
+
 module.exports = function(api) {
     api.cache(true);
     return {
         plugins: [
             "@babel/transform-typescript",
             [
-                require.resolve("./babel-plugin-express-routes"),
+                join(__dirname, "./babel-plugin-express-routes"),
                 {
-                    outPath: `${process.env.GITHUB_WORKSPACE || "."}/${process.env.INPUT_DOCS_ROUTE_PATH}`,
+                    outPath: `${process.env.GITHUB_WORKSPACE || "."}/${
+                        process.env.INPUT_PATTERN
+                    }`,
                     maxDepth: 10
                 }
             ]
