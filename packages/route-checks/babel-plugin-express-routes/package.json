@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "test": "jest",
-        "test:watch": "jest --watch --watchPathIgnorePatterns /routes"
+        "test:watch": "yarn test --watch"
     },
     "dependencies": {
         "@babel/cli": "7.8.4",
