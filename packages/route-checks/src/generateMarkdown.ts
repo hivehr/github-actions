@@ -11,7 +11,7 @@ Handlebars.registerHelper("eachInMap", function(map: Map<any, any>, block) {
 });
 
 const template = Handlebars.compile(
-    readFileSync(join(__dirname, "templates", "template.handlebars")).toString()
+    readFileSync(join(__dirname, "templates", "markdown.handlebars")).toString()
 );
 
 enum RequestMethod {
@@ -25,6 +25,7 @@ enum RequestMethod {
     trace = "trace",
     patch = "patch"
 }
+
 interface SimpleController {
     serviceName: string;
     controllerName: string;
@@ -53,7 +54,7 @@ const convertController = (controller: SimpleController): Controller => {
     return { ...controller, routes: routesMap };
 };
 
-export const generateMd = (dir: string): string => {
+export const generateMarkdown = (dir: string): string => {
     const services = new Map<string, Controller[]>();
     walkSync(dir as string, {
         listeners: {
@@ -79,10 +80,10 @@ export const generateMd = (dir: string): string => {
     return template({ services });
 };
 
-export const writeMd = (path: string): void => {
-    writeFileSync(path, generateMd(path));
+const main = (path: string): void => {
+    writeFileSync(path, generateMarkdown(path));
 };
 
 if (require.main === module) {
-    writeMd(process.argv[2]);
+    main(process.argv[2]);
 }
