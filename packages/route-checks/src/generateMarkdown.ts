@@ -1,7 +1,7 @@
-import fs from "fs";
-import walk from "walk";
-import path from "path";
+import { readFileSync, writeFileSync } from "fs";
 import Handlebars from "handlebars";
+import { join } from "path";
+import { walkSync } from "walk";
 
 Handlebars.registerHelper("eachInMap", function(map: Map<any, any>, block) {
     return Array.from(map.keys()).reduce(
@@ -11,7 +11,7 @@ Handlebars.registerHelper("eachInMap", function(map: Map<any, any>, block) {
 });
 
 const template = Handlebars.compile(
-    fs.readFileSync(`${process.cwd()}/templates/template.handlebars`).toString()
+    readFileSync(join(__dirname, "templates", "template.handlebars")).toString()
 );
 
 enum RequestMethod {
@@ -55,11 +55,11 @@ const convertController = (controller: SimpleController): Controller => {
 
 export const generateMd = (dir: string): string => {
     const services = new Map<string, Controller[]>();
-    walk.walkSync(dir as string, {
+    walkSync(dir as string, {
         listeners: {
             file: (root, fileStats, next) => {
                 const controller: SimpleController = JSON.parse(
-                    fs.readFileSync(path.join(root, fileStats.name)).toString()
+                    readFileSync(join(root, fileStats.name)).toString()
                 );
                 const serviceName = capitalize(controller.serviceName);
 
@@ -80,7 +80,7 @@ export const generateMd = (dir: string): string => {
 };
 
 export const writeMd = (path: string): void => {
-    fs.writeFileSync(path, generateMd(path));
+    writeFileSync(path, generateMd(path));
 };
 
 if (require.main === module) {
