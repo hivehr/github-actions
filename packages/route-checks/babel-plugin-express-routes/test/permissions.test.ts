@@ -32,7 +32,7 @@ const verifyFile = (fileName: string) => {
 
 describe("Permissions", () => {
     afterAll(() => {
-        rimraf.sync(`${__dirname}/../routes/`);
+        rimraf.sync(OUT_DIR);
     });
 
     it("requireScope with single arg", () =>
