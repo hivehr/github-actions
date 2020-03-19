@@ -1,7 +1,7 @@
 {
     "name": "@hive/babel-plugin-express-routes",
     "version": "1.0.0",
-    "main": "lib/permissions.js",
+    "main": "lib/index.js",
     "license": "MIT",
     "scripts": {
         "build": "tsc",
