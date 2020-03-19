@@ -4,8 +4,15 @@ import { join, resolve } from "path";
 import rimraf from "rimraf";
 
 const TESTS_DIR = __dirname;
-const BASE_DIR = resolve(__dirname, "..");
-const ROUTES_DIR = join(__dirname, "packages", "service", "src", "routes");
+const BASE_DIR = join(TESTS_DIR, "..");
+const FIXTURES_DIR = join(
+    TESTS_DIR,
+    "fixtures",
+    "packages",
+    "service",
+    "src",
+    "routes"
+);
 const OUT_DIR = join(TESTS_DIR, "routes");
 
 const transform = (filePath: string) =>
@@ -23,7 +30,7 @@ const transform = (filePath: string) =>
     });
 
 const verifyFile = (fileName: string) => {
-    const filePath = join(ROUTES_DIR, `${fileName}.ts`);
+    const filePath = join(FIXTURES_DIR, `${fileName}.ts`);
     transform(filePath);
 
     const resultFile = join(OUT_DIR, `service_${fileName}.json`);
