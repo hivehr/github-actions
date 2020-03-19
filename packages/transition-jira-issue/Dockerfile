@@ -14,7 +14,9 @@ LABEL "com.github.actions.inputs.key.required"="true"
 LABEL "com.github.actions.inputs.to.description"="Status to transition to (id or name)"
 LABEL "com.github.actions.inputs.to.required"="true"
 LABEL "com.github.actions.inputs.from.description"="Comma separated statuses that this issue must be in for the transition to happen (ids or names)"
-LABEL "com.github.actions.inputs.from.required"="true"
+LABEL "com.github.actions.inputs.from.required"="false"
+LABEL "com.github.actions.inputs.assignee.description"="Optional email address or username of the user to assign the issue to after transitioning"
+LABEL "com.github.actions.inputs.assignee.required"="false"
 
 WORKDIR /app
 
