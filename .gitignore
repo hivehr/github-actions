@@ -97,5 +97,6 @@ npm-debug.log
 /scratch
 
 # Compiled files
-/packages/*/lib
+/packages/**/lib
+node_modules/
 /packages/*/*.zip
