@@ -23,10 +23,12 @@
         },
         {
             "path": "packages/route-checks"
+        },
+        {
+            "path": "packages/github-push-action"
         }
     ],
     "settings": {
-        "typescript.tsdk": "packages/transition-jira-issue/.vscode/pnpify/typescript/lib",
         "editor.formatOnSave": true,
         "search.exclude": {
             "**/node_modules": true,

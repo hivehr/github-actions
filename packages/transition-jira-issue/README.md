@@ -1,25 +1,16 @@
-# get-jira-issue
+# transition-jira-issue
 
 ## Overview
 
-Takes `string` and `pattern` inputs and attempts to find a JIRA issue associated with the given string, writing it's details as outputs if found.
+Takes an issue `key` and a `to` transition name, and transitions the related JIRA to that transition. Optionally we can also pass `from` status(es) to limit the transition, and an `assignee` if we wish to assign the issue to a user after transitioning
 
 ## Inputs
 
 ```bash
-string      # String to match the below pattern against e.g. HRW-123: My name
-pattern     # RegExp pattern whose first capture group matches against the JIRA issue key e.g. (HRW-[0-9]+)
-```
-
-### Outputs
-
-```bash
-key         # JIRA Issue key e.g. HRW-123
-summary     # Summary of the JIRA issue (it's title)
-status      # Display friendly status of the JIRa issue (e.g. To Do)
-projectKey  # Project key of the JIRA issue (e.g. HRW)
-creator     # Email address of the JIRA issues creator
-url         # Direct URL to the JIRA issues details, relative to the JIRA_BASE_URL env var
+key      	# Issue key name e.g. HRW-123
+to     	 	# Transition name to transition the issue to
+from     	# Transition name to limit the transition from specific statuses
+assignee    # Optional email address or username of the user to assign the issue to after transitioning
 ```
 
 ## Environment variables

@@ -4,3 +4,6 @@
 [submodule "packages/terraform-github-actions"]
 	path = packages/terraform-github-actions
 	url = https://github.com/hashicorp/terraform-github-actions
+[submodule "packages/github-push-action"]
+	path = packages/github-push-action
+	url = https://github.com/ad-m/github-push-action.git
