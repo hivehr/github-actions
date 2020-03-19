@@ -41,6 +41,7 @@ interface Controller {
     controllerName: string;
     routes: Map<string, Route>;
 }
+
 const capitalize = (content: string): string =>
     content.charAt(0).toUpperCase() + content.slice(1);
 

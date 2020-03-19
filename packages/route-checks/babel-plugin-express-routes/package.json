@@ -3,29 +3,30 @@
     "version": "1.0.0",
     "main": "lib/permissions.js",
     "license": "MIT",
-    "dependencies": {
-        "fs-extra": "8.1.0"
-    },
     "scripts": {
         "build": "tsc",
         "test": "jest",
         "test:watch": "jest --watch --watchPathIgnorePatterns /routes"
     },
-    "devDependencies": {
-        "@babel/core": "^7",
-        "@babel/preset-typescript": "^7.8.3",
-        "@babel/cli": "^7.8.4",
+    "dependencies": {
+        "@babel/cli": "7.8.4",
+        "@babel/core": "7",
+        "@babel/preset-typescript": "7.8.3",
         "@babel/types": "7.8.7",
+        "fs-extra": "8.1.0"
+    },
+    "devDependencies": {
+        "babel-jest": "25.1.0",
         "@types/babel-traverse": "6.25.5",
         "@types/babel-types": "7.0.7",
-        "@types/babel__core": "^7.1.6",
+        "@types/babel__core": "7.1.6",
         "@types/fs-extra": "8.1.0",
-        "@types/jest": "^25.1.4",
-        "@types/rimraf": "^2.0.3",
-        "babel-jest": "^25.1.0",
-        "jest": "^25.1.0",
-        "rimraf": "^3.0.2",
-        "ts-jest": "^25.2.1",
+        "@types/jest": "25.1.4",
+        "@types/node": "13.9.2",
+        "@types/rimraf": "2.0.3",
+        "jest": "25.1.0",
+        "rimraf": "3.0.2",
+        "ts-jest": "25.2.1",
         "typescript": "3.8.3"
     }
 }

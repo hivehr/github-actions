@@ -18,11 +18,11 @@
         "@actions/core": "1.2.2",
         "@types/node": "13.7.4",
         "jira-connector": "2.16.1",
-        "lodash": "false4.17.15",
+        "lodash": "4.17.15",
         "ts-node": "8.6.2",
         "typescript": "3.8.2"
     },
     "devDependencies": {
-        "@types/lodash": "false4.14.149"
+        "@types/lodash": "4.14.149"
     }
 }

@@ -3,9 +3,12 @@ module.exports = function(api) {
     return {
         presets: ["@babel/typescript"],
         plugins: [
-            [require.resolve(process.cwd()), {
-            maxDepth: 10
-        }]
-    ]
+            [
+                require.resolve(process.cwd()),
+                {
+                    maxDepth: 10
+                }
+            ]
+        ]
     };
 };
