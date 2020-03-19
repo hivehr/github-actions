@@ -1,6 +1,4 @@
-/node_modules
-/lib
-
-*/node_modules/
-
 Dockerfile
+node_modules
+*/node_modules
+lib
