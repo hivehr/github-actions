@@ -4,7 +4,7 @@ module.exports = function(api) {
         presets: ["@babel/typescript"],
         plugins: [
             [
-                require.resolve(process.cwd()),
+                __dirname,
                 {
                     maxDepth: 10
                 }
