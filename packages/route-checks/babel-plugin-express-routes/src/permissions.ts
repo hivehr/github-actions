@@ -182,39 +182,40 @@ export default function({
             }
         },
         post() {
-            if (this.permissions.size > 0) {
-                // write to disk.
-                const filename = this.file.opts.filename;
-                console.log(filename);
-                const controllerName = path.basename(
-                    filename,
-                    path.extname(filename)
-                );
-                const relativePath = path.relative(process.cwd(), filename);
-                const folders: string[] = relativePath.split(path.sep);
-                const srcIndex = folders.findIndex(f => f === "src");
-                if (!srcIndex) {
-                    throw new Error("Src Location Not Found");
-                }
-                const serviceName = folders[srcIndex - 1]; //index based on one step before src.
-                console.log(relativePath);
-                const { outPath = "./routes/" } = this.opts;
-                const endPath = path.join(
-                    outPath,
-                    `${serviceName}_${controllerName}.json`
-                );
-
-                const ServiceController: Controller = {
-                    serviceName,
-                    controllerName,
-                    routes: mapToObj(this.permissions)
-                };
-                fs.mkdirpSync(path.dirname(endPath));
-                fs.writeFileSync(
-                    endPath,
-                    JSON.stringify(ServiceController, null, 2)
-                );
+            if (this.permissions.size < 1) {
+                return;
             }
+
+            const { outPath = "./routes/" } = this.opts;
+
+            const filename = this.file.opts.filename;
+            const controllerName = path.basename(
+                filename,
+                path.extname(filename)
+            );
+
+            const relativePath = path.relative(process.cwd(), filename);
+            const folders = relativePath.split(path.sep);
+
+            const srcIndex = folders.findIndex(f => f === "src");
+            if (!srcIndex) {
+                throw new Error("Src Location Not Found");
+            }
+
+            const serviceName = folders[srcIndex - 1]; //index based on one step before src.
+            const endPath = path.join(
+                outPath,
+                `${serviceName}_${controllerName}.json`
+            );
+
+            const controller: Controller = {
+                serviceName,
+                controllerName,
+                routes: mapToObj(this.permissions)
+            };
+
+            fs.mkdirpSync(path.dirname(endPath));
+            fs.writeFileSync(endPath, JSON.stringify(controller, null, 2));
         }
     };
 }
