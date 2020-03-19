@@ -6,7 +6,7 @@ module.exports = function(api) {
             [
                 require.resolve("./babel-plugin-express-routes"),
                 {
-                    outPath: `${process.env.GITHUB_WORKSPACE || "."}/routes`,
+                    outPath: `${process.env.GITHUB_WORKSPACE || "."}/${process.env.INPUT_DOCS_ROUTE_PATH}`,
                     maxDepth: 10
                 }
             ]
