@@ -1,0 +1,23 @@
+# Service routes
+
+
+**This file was auto generated and will be updated on changes to master do not edit manually**
+
+---
+
+{{#eachInMap services}}
+## {{key}}
+
+{{#each value}}
+* /{{controllerName}}
+    | Route Name | Method | Required Permissions |
+    | ---------- | ------ | -------------------- |
+    {{#eachInMap routes}}
+    | {{key}} | {{value.method}} | {{value.permissions}} |
+    {{/eachInMap}}
+{{/each}}
+
+
+---
+
+{{/eachInMap}}

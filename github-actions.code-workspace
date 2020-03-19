@@ -20,6 +20,9 @@
         },
         {
             "path": "packages/terraform-github-actions"
+        },
+        {
+            "path": "packages/route-checks"
         }
     ],
     "settings": {
