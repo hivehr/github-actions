@@ -1,5 +1,5 @@
 {
-    "name": "route-checks",
+    "name": "document-routes",
     "description": "Generates documentation for service routes",
     "private": true,
     "license": "MIT",
