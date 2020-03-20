@@ -4,7 +4,7 @@
     "private": true,
     "license": "MIT",
     "author": "Hive HR <engineering@hive.hr>",
-    "main": "index.ts",
+    "main": "lib/index.js",
     "engines": {
         "node": "12"
     },
