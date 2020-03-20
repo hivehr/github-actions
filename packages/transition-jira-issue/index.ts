@@ -30,7 +30,7 @@ const request = <T extends (...args: any[]) => any>(
 };
 
 const assign = async (client: Jira, issueKey: string, assignee?: string) => {
-    if (assignee == null) {
+    if (assignee == null || assignee === "") {
         return;
     }
 
