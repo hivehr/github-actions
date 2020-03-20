@@ -25,7 +25,7 @@
             "path": "packages/document-routes"
         },
         {
-            "path": "packages/github-push-action"
+            "path": "packages/push"
         }
     ],
     "settings": {
