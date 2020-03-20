@@ -22,7 +22,7 @@
             "path": "packages/terraform-github-actions"
         },
         {
-            "path": "packages/github-push-action"
+            "path": "packages/push"
         }
     ],
     "settings": {
