@@ -1,11 +1,11 @@
-name: push-to-branch
+name: push
 on:
   push:
     branches:
       - master
     paths:
-      - "packages/push-to-branch/*"
-      - ".github/workflows/push-to-branch.yml"
+      - "packages/push/*"
+      - ".github/workflows/push.yml"
 
 jobs:
   build:
@@ -17,9 +17,9 @@ jobs:
       - name: GitHub registry build + push
         uses: whoan/docker-build-with-cache-action@master
         with:
-          context: packages/push-to-branch
+          context: packages/push
           registry: docker.pkg.github.com
-          image_name: hivehr/github-actions/push-to-branch
+          image_name: hivehr/github-actions/push
           image_tag: latest
           username: "${{ github.actor }}"
           password: "${{ secrets.GITHUB_TOKEN }}"
@@ -28,8 +28,8 @@ jobs:
       - name: DockerHub registry build + push
         uses: whoan/docker-build-with-cache-action@master
         with:
-          context: packages/push-to-branch
-          image_name: hivehr/github-actions-push-to-branch
+          context: packages/push
+          image_name: hivehr/github-actions-push
           image_tag: latest
           username: "${{ secrets.DOCKERHUB_USERNAME }}"
           password: "${{ secrets.DOCKERHUB_TOKEN }}"
