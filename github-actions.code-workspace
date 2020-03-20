@@ -22,6 +22,9 @@
             "path": "packages/terraform-github-actions"
         },
         {
+            "path": "packages/document-routes"
+        },
+        {
             "path": "packages/push"
         }
     ],

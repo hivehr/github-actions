@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Permissions require scope with single rag and two ors with single arg 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"require_scope_with_single_rag_and_two_ors_with_single_arg\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(over here 2) || (here) || (permission)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions requireScope with array arg 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"require_scope_with_array_arg\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(permission && permission2)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions requireScope with array arg and 'or' with array arg 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"require_scope_with_array_arg_and_or_with_array_arg\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(here && here2) || (permission && permissions1)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions requireScope with single arg 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"require_scope_with_single_arg\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(permission)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions requireScope with single arg and 'or' with array arg 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"require_scope_with_single_arg_and_or_with_array_arg\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(here && here2) || (permission)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions requireScope with single arg and 'or' with single arg 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"require_scope_with_single_arg_and_or_with_single_arg\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(here) || (permission)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions route with no permissions required 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"no_permissions_required\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(No permissions required)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
+
+exports[`Permissions test all request methods 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"test_all_request_methods\\",
+  \\"routes\\": {
+    \\"/route\\": {
+      \\"permissions\\": \\"(permission)\\",
+      \\"method\\": \\"get\\"
+    }
+  }
+}"
+`;
