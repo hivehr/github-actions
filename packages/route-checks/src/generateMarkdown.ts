@@ -56,7 +56,7 @@ const convertController = (controller: SimpleController): Controller => {
 
 export const generateMarkdown = (dir: string): string => {
     const services = new Map<string, Controller[]>();
-    walkSync(dir as string, {
+    walkSync(dir, {
         listeners: {
             file: (root, fileStats, next) => {
                 const controller: SimpleController = JSON.parse(
@@ -80,10 +80,10 @@ export const generateMarkdown = (dir: string): string => {
     return template({ services });
 };
 
-const main = (path: string): void => {
-    writeFileSync(path, generateMarkdown(path));
+const main = (path: string, routesPath: string): void => {
+    writeFileSync(path, generateMarkdown(routesPath));
 };
 
 if (require.main === module) {
-    main(process.argv[2]);
+    main(process.argv[2], process.argv[3]);
 }

@@ -10,7 +10,7 @@
     },
     "scripts": {
         "start": "yarn generate:routes && yarn generate:md",
-        "build": "tsc",
+        "build": "tsc && cp -r src/templates ./lib",
         "generate:routes": "babel --extensions .ts",
         "generate:md": "node lib/generateMarkdown.js"
     },
