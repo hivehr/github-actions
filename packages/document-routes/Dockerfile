@@ -3,10 +3,21 @@ FROM node:12.16.1-alpine
 LABEL "name"="Check Routes"
 LABEL "maintainer"="Hive HR <engineering@hive.hr>"
 LABEL "version"="1.0.0"
+
 LABEL "com.github.actions.inputs.pattern.description"="Glob pattern to search for route files (relative to github workspace)"
 LABEL "com.github.actions.inputs.pattern.required"="true"
+
 LABEL "com.github.actions.inputs.out_path.description"="Location to store the generated files (relative to github workspace)"
 LABEL "com.github.actions.inputs.out_path.required"="true"
+
+LABEL "com.github.actions.inputs.or_statement_regex.description"="Regex string to match or statement on a permission"
+LABEL "com.github.actions.inputs.outor_statement_regex_path.required"="false"
+
+LABEL "com.github.actions.inputs.controller_name_regex.description"="Regex string to match controller names"
+LABEL "com.github.actions.inputs.controller_name_regex.required"="false"
+
+LABEL "com.github.actions.inputs.require_scopes_regex.description"="Regex string to match the require_scopes string"
+LABEL "com.github.actions.inputs.require_scopes_regex.required"="false"
 
 WORKDIR /app
 COPY . .

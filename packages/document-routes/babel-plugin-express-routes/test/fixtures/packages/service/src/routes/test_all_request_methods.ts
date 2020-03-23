@@ -13,3 +13,11 @@ const router = {
 };
 
 router.get("/route", requireScopes("permission"));
+router.head("/route", requireScopes("permission"));
+router.post("/route", requireScopes("permission"));
+router.put("/route", requireScopes("permission"));
+router.delete("/route", requireScopes("permission"));
+router.connect("/route", requireScopes("permission"));
+router.options("/route", requireScopes("permission"));
+router.trace("/route", requireScopes("permission"));
+router.patch("/route", requireScopes("permission"));

@@ -29,7 +29,7 @@ enum RequestMethod {
 interface SimpleController {
     serviceName: string;
     controllerName: string;
-    routes: object;
+    methods: object;
 }
 
 interface Route {
@@ -40,18 +40,20 @@ interface Route {
 interface Controller {
     serviceName: string;
     controllerName: string;
-    routes: Map<string, Route>;
+    methods: Map<RequestMethod, Map<string, Route>>;
 }
 
 const capitalize = (content: string): string =>
     content.charAt(0).toUpperCase() + content.slice(1);
 
 const convertController = (controller: SimpleController): Controller => {
-    const routesMap = new Map<string, any>();
-    Array.from(Object.entries(controller.routes)).forEach(([key, value]) =>
-        routesMap.set(key, value)
-    );
-    return { ...controller, routes: routesMap };
+    const methodsMap = new Map<RequestMethod, Map<string, Route>>();
+    Array.from(Object.entries(controller.methods)).forEach(([method, routes]) => {
+        const routesMap = new Map<string, Route>();
+        Array.from(Object.entries(routes)).forEach(([route, permissions]) => routesMap.set(route, permissions as Route))
+        methodsMap.set(method as RequestMethod, routesMap)
+    });
+    return { ...controller, methods: methodsMap };
 };
 
 export const generateMarkdown = (dir: string): string => {
