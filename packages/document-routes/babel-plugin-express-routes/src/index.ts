@@ -34,7 +34,6 @@ export enum RequestMethod {
 }
 export interface Route {
     permissions: string;
-    method: RequestMethod;
 }
 export interface PluginOpts {
     outPath: string;
@@ -47,7 +46,7 @@ export interface PluginOpts {
 export interface Controller {
     serviceName: string;
     controllerName: string;
-    routes: object;
+    methods: object;
 }
 
 export default function({
@@ -55,7 +54,7 @@ export default function({
 }: {
     types: typeof babel.types;
 }): babel.PluginObj<{
-    permissions: Map<string, Route>;
+    permissions: Map<RequestMethod, Map<string, Route>>;
     file: any;
     opts: PluginOpts;
     orStatementRegex: RegExp;
@@ -64,7 +63,7 @@ export default function({
 }> {
     return {
         pre() {
-            this.permissions = new Map<string, Route>();
+            this.permissions = new Map<RequestMethod, Map<string, Route>>();
             this.orStatementRegex = new RegExp(
                 this.opts.orStatementRegexString || "or"
             );
@@ -171,10 +170,11 @@ export default function({
                     }
 
                     if (pathName) {
-                        this.permissions.set(pathName, {
-                            permissions: "(" + orGroups.join(") || (") + ")",
-                            method
+                        const methodMap = this.permissions.get(method) || new Map<string, Route>();
+                        methodMap.set(pathName, {
+                            permissions: "(" + orGroups.join(") || (") + ")"
                         });
+                        this.permissions.set(method, methodMap);
                     } else {
                         throw new Error("Route path not resolved");
                     }
@@ -211,7 +211,13 @@ export default function({
             const controller: Controller = {
                 serviceName,
                 controllerName,
-                routes: mapToObj(this.permissions)
+                methods: Array.from(this.permissions.entries()).reduce(
+                    (currentPermission, [requestMethod, routes]) => ({
+                        ...currentPermission,
+                        [requestMethod]: mapToObj(routes)
+                    }),
+                    {}
+                )
             };
 
             fs.mkdirpSync(path.dirname(endPath));
@@ -220,7 +226,7 @@ export default function({
     };
 }
 
-const mapToObj = (map: Map<string, any>) =>
+const mapToObj = (map: Map<string, any>): object =>
     Array.from(map).reduce(
         (obj, [key, value]) => ({ ...obj, [key]: value }),
         {}

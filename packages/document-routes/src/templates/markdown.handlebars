@@ -12,8 +12,10 @@
 * /{{controllerName}}
     | Route Name | Method | Required Permissions |
     | ---------- | ------ | -------------------- |
-    {{#eachInMap routes}}
-    | {{key}} | {{value.method}} | {{value.permissions}} |
+    {{#eachInMap methods}}
+    {{#eachInMap value}}
+    | {{key}} | {{../key}} | {{value.permissions}} |
+    {{/eachInMap}}
     {{/eachInMap}}
 {{/each}}
 
