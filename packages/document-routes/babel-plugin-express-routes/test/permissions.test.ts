@@ -1,6 +1,6 @@
 import { transformFileSync } from "@babel/core";
 import fs from "fs";
-import { join, resolve } from "path";
+import { join } from "path";
 import rimraf from "rimraf";
 
 const TESTS_DIR = __dirname;
@@ -38,7 +38,7 @@ const verifyFile = (fileName: string) => {
 
 describe("Permissions", () => {
     afterAll(() => {
-        //rimraf.sync(OUT_DIR);
+        rimraf.sync(OUT_DIR);
     });
 
     it("requireScope with single arg", () =>
