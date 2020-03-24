@@ -11,7 +11,7 @@ module.exports = function(api) {
                     outPath: `${process.env.GITHUB_WORKSPACE || "."}/${process
                         .env.INPUT_OUT_PATH || ""}`,
                     orStatementRegexString: `${process.env
-                        .INPUT_OR_STATEMENT_REGEX || "or"} `,
+                        .INPUT_OR_STATEMENT_REGEX || "or"}`,
                     controllerNameRegexString: `${process.env
                         .INPUT_CONTROLLER_NAME_REGEX || "router"}`,
                     requireScopesRegexString: `${process.env

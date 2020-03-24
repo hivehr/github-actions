@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import Handlebars from "handlebars";
-import { join } from "path";
+import { join, relative } from "path";
 import { walkSync } from "walk";
 
 Handlebars.registerHelper("eachInMap", function(map: Map<any, any>, block) {
@@ -11,7 +11,7 @@ Handlebars.registerHelper("eachInMap", function(map: Map<any, any>, block) {
 });
 
 const template = Handlebars.compile(
-    readFileSync(join(__dirname, "templates", "markdown.handlebars")).toString()
+    readFileSync(process.env.INPUT_TEMPLATE_PATH ? relative(process.cwd(), process.env.INPUT_TEMPLATE_PATH) : join(__dirname, "templates", "markdown.handlebars")).toString()
 );
 
 enum RequestMethod {

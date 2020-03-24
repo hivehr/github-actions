@@ -19,6 +19,9 @@ LABEL "com.github.actions.inputs.controller_name_regex.required"="false"
 LABEL "com.github.actions.inputs.require_scopes_regex.description"="Regex string to match the require_scopes string"
 LABEL "com.github.actions.inputs.require_scopes_regex.required"="false"
 
+LABEL "com.github.actions.inputs.template_path.description"="Location of template handlebars file. This can use all default handlebars handlers and the eachInMap handler"
+LABEL "com.github.actions.inputs.template_path.required"="false"
+
 WORKDIR /app
 COPY . .
 

@@ -1,6 +1,6 @@
 import { transformFileSync } from "@babel/core";
 import fs from "fs";
-import { join, resolve } from "path";
+import { join } from "path";
 import rimraf from "rimraf";
 
 const TESTS_DIR = __dirname;
@@ -22,8 +22,7 @@ const transform = (filePath: string) =>
             [
                 BASE_DIR,
                 {
-                    outPath: OUT_DIR,
-                    maxDepth: 10
+                    outPath: OUT_DIR
                 }
             ]
         ]
@@ -67,4 +66,19 @@ describe("Permissions", () => {
 
     it("test all request methods", () =>
         verifyFile("test_all_request_methods"));
+
+    it("no permissions with second middleware", () => {
+        verifyFile("no_permissions_second_middleware")
+    })
+
+    it("test max depth exception", () => {
+        let errored = false
+        try {
+            verifyFile("max_depth")
+        } catch (e) {
+            errored = true;
+            expect(e.message).toEqual(expect.stringContaining("max_depth.ts: Max Depth Exceeded"))
+        }
+        expect(errored).toBeTruthy()
+    });
 });
