@@ -1,6 +1,7 @@
 import babel from "@babel/core";
 import path from "path";
 import fs from "fs-extra";
+import util from "util";
 
 const calculateOrGroup = (t: typeof babel.types, arg: babel.Node): string => {
     if (t.isArrayExpression(arg)) {
@@ -99,14 +100,13 @@ export default function({
                         const arg = path.node.arguments[1];
                         let callExpression: babel.types.CallExpression = arg;
 
-                        if (
-                            t.isIdentifier(arg.callee) &&
-                            this.requireScopesRegex.test(arg.callee.name)
-                        ) {
+                        if (t.isIdentifier(arg.callee)) {
                             // just requireScopes, no "or" chaining
-                            orGroups.push(
-                                calculateOrGroup(t, arg.arguments[0])
-                            );
+                            if (this.requireScopesRegex.test(arg.callee.name)) {
+                                orGroups.push(
+                                    calculateOrGroup(t, arg.arguments[0])
+                                );
+                            }
                             e = true;
                         }
 
@@ -114,10 +114,8 @@ export default function({
                             let callee = arg.callee;
 
                             let depth = 0;
-                            while (
-                                e === false &&
-                                depth < (this.opts.maxDepth || 3)
-                            ) {
+                            const maxDepth = this.opts.maxDepth || 3;
+                            while (e === false && depth < maxDepth) {
                                 if (
                                     isOrStatement(
                                         callee,
@@ -160,17 +158,18 @@ export default function({
                                 depth++;
                             }
 
-                            if (depth === this.opts.maxDepth) {
-                                console.dir(path.node, { depth: 3 });
+                            if (depth === maxDepth) {
                                 throw new Error("Max Depth Exceeded");
                             }
                         }
-                    } else {
+                    }
+                    if (orGroups.length === 0) {
                         orGroups.push("No permissions required");
                     }
-
                     if (pathName) {
-                        const methodMap = this.permissions.get(method) || new Map<string, Route>();
+                        const methodMap =
+                            this.permissions.get(method) ||
+                            new Map<string, Route>();
                         methodMap.set(pathName, {
                             permissions: "(" + orGroups.join(") || (") + ")"
                         });

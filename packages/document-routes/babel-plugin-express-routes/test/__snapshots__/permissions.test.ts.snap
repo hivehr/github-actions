@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Permissions no permissions with second middleware 1`] = `
+"{
+  \\"serviceName\\": \\"service\\",
+  \\"controllerName\\": \\"no_permissions_second_middleware\\",
+  \\"methods\\": {
+    \\"get\\": {
+      \\"/route\\": {
+        \\"permissions\\": \\"(No permissions required)\\"
+      }
+    }
+  }
+}"
+`;
+
 exports[`Permissions require scope with single rag and two ors with single arg 1`] = `
 "{
   \\"serviceName\\": \\"service\\",
