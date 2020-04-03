@@ -21,7 +21,7 @@
         "@types/babel-types": "7.0.7",
         "@types/babel__core": "7.1.6",
         "@types/fs-extra": "8.1.0",
-        "@types/jest": "25.1.4",
+        "@types/jest": "25.2.1",
         "@types/node": "13.9.2",
         "@types/rimraf": "2.0.3",
         "jest": "25.1.0",
