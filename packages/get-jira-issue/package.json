@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@actions/core": "1.2.2",
-        "@types/node": "13.7.4",
+        "@types/node": "13.11.1",
         "jira-connector": "2.16.1",
         "ts-node": "8.6.2",
         "typescript": "3.8.2"

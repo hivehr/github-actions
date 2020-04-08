@@ -23,7 +23,7 @@
         "walk": "2.3.14"
     },
     "devDependencies": {
-        "@types/node": "13.9.2",
+        "@types/node": "13.11.1",
         "@types/walk": "2.3.0",
         "ts-node": "8.6.2"
     }
