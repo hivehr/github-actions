@@ -16,7 +16,7 @@
         "fs-extra": "8.1.0"
     },
     "devDependencies": {
-        "babel-jest": "25.1.0",
+        "babel-jest": "25.3.0",
         "@types/babel-traverse": "6.25.5",
         "@types/babel-types": "7.0.7",
         "@types/babel__core": "7.1.6",
@@ -24,7 +24,7 @@
         "@types/jest": "25.1.4",
         "@types/node": "13.9.2",
         "@types/rimraf": "2.0.3",
-        "jest": "25.1.0",
+        "jest": "25.3.0",
         "rimraf": "3.0.2",
         "ts-jest": "25.2.1",
         "typescript": "3.8.3"
