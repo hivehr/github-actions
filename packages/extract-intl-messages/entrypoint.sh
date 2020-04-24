@@ -5,6 +5,6 @@ yarn global add rimraf@2.6.2
 yarn global add ts-node@8.4.1
 
 NODE_OPTIONS="--max-old-space-size=4096"
-yarn --cwd=/app/${GITHUB_WORKSPACE}/packages/app ts-node -TP tsconfig.webpack.json scripts/intl/generate-messages-en.ts
-yarn --cwd=/app/${GITHUB_WORKSPACE}/packages/app rimraf build/intl/messages
+yarn --cwd=/app/${GITHUB_WORKSPACE}/packages/app ts-node -TP ${GITHUB_WORKSPACE}/packages/app/tsconfig.webpack.json ${GITHUB_WORKSPACE}/packages/app/scripts/intl/generate-messages-en.ts
+yarn --cwd=/app/${GITHUB_WORKSPACE}/packages/app rimraf ${GITHUB_WORKSPACE}/packages/app/build/intl/messages
 
