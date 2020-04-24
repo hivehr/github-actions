@@ -1,7 +1,7 @@
 import { info, setFailed } from "@actions/core";
 
 const main = async () => {
-    info("Inside Action");
+    info("Inside Action ");
 };
 
 if (require.main === module) {
