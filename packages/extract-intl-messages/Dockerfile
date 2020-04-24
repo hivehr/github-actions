@@ -9,13 +9,13 @@ LABEL "com.github.actions.description"="Extracts intl messages"
 LABEL "com.github.actions.branding.icon"="check-square"
 LABEL "com.github.actions.branding.color"="blue"
 
+LABEL "com.github.actions.inputs.path.description"="Babel path"
+LABEL "com.github.actions.inputs.path.required"="true"
+
 WORKDIR /app
 
 COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
 RUN time yarn install --frozen-lockfile --no-cache --production=false
-
-COPY . .
-RUN yarn lint && yarn build
 
 ENTRYPOINT /bin/sh -c "cd /app && yarn start"

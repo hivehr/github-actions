@@ -9,10 +9,7 @@
         "node": "12"
     },
     "scripts": {
-        "start": "node lib/index.js",
-        "dev": "yarn ts-node index.ts",
-        "build": "yarn tsc -p .",
-        "lint": "exit 0"
+        "start": "babel --config-file babel.config.js '${GITHUB_WORKSPACE}/${INPUT_PATH}'",
     },
     "dependencies": {
         "@actions/core": "1.2.2",
