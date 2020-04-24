@@ -18,4 +18,8 @@ COPY package.json yarn.lock .yarnrc ./
 COPY .yarn .yarn
 RUN time yarn install --frozen-lockfile --no-cache --production=false
 
-ENTRYPOINT /bin/sh -c "cd /app && yarn start"
+COPY . .
+
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+
