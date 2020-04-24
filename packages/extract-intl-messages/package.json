@@ -9,7 +9,7 @@
         "node": "12"
     },
     "scripts": {
-        "start": "babel --config-file babel.config.js '${GITHUB_WORKSPACE}/${INPUT_PATH}'",
+        "start": "babel --config-file babel.config.js '${GITHUB_WORKSPACE}/${INPUT_PATH}'"
     },
     "dependencies": {
         "@actions/core": "1.2.2",
