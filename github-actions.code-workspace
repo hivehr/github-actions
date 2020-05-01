@@ -26,6 +26,9 @@
         },
         {
             "path": "packages/push"
+        },
+        {
+            "path": "packages/chromatic"
         }
     ],
     "settings": {

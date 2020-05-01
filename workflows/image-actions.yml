@@ -1,0 +1,47 @@
+name: image-actions
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/image-actions/*"
+      - ".github/workflows/image-actions.yml"
+
+jobs:
+  build:
+    name: docker build + push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Checkout submodule code
+      - name: git submodule sync --recursive
+        shell: bash
+        run: |
+          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+          git submodule sync --recursive
+          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+
+      # Use a newer version of Ubuntu to build ours... as cosmic doesn't work for some reason!
+      - shell: bash
+        run: sed -i 's/ubuntu:cosmic/ubuntu:xenial/g' packages/image-actions/Dockerfile
+
+      - name: GitHub registry build + push
+        uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/image-actions
+          registry: docker.pkg.github.com
+          image_name: hivehr/github-actions/image-actions
+          image_tag: latest
+          username: "${{ github.actor }}"
+          password: "${{ secrets.GITHUB_TOKEN }}"
+
+      # TODO: Remove once we can use GitHub Registry images in Actions
+      - name: DockerHub registry build + push
+        uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/image-actions
+          image_name: hivehr/github-actions-image-actions
+          image_tag: latest
+          username: "${{ secrets.DOCKERHUB_USERNAME }}"
+          password: "${{ secrets.DOCKERHUB_TOKEN }}"

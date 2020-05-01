@@ -1,0 +1,35 @@
+name: transition-jira-issue
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/transition-jira-issue/*"
+      - ".github/workflows/transition-jira-issue.yml"
+
+jobs:
+  build:
+    name: docker build + push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: GitHub registry build + push
+        uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/transition-jira-issue
+          registry: docker.pkg.github.com
+          image_name: hivehr/github-actions/transition-jira-issue
+          image_tag: latest
+          username: "${{ github.actor }}"
+          password: "${{ secrets.GITHUB_TOKEN }}"
+
+      # TODO: Remove once we can use GitHub Registry images in Actions
+      - name: DockerHub registry build + push
+        uses: whoan/docker-build-with-cache-action@master
+        with:
+          context: packages/transition-jira-issue
+          image_name: hivehr/github-actions-transition-jira-issue
+          image_tag: latest
+          username: "${{ secrets.DOCKERHUB_USERNAME }}"
+          password: "${{ secrets.DOCKERHUB_TOKEN }}"
