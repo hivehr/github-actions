@@ -40,6 +40,8 @@ LABEL "com.github.actions.inputs.exitOnceUploaded.required"="false"
 LABEL "com.github.actions.inputs.ignoreLastBuildOnBranch.description"="Description goes here"
 LABEL "com.github.actions.inputs.ignoreLastBuildOnBranch.required"="false"
 
+RUN apk add --no-cache git
+
 WORKDIR /app
 
 COPY module/package.json module/yarn.lock ./
