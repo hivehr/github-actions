@@ -3,7 +3,7 @@ FROM node:12.16.1-alpine
 LABEL "name"="Chromatic"
 LABEL "maintainer"="Hive HR <engineering@hive.hr>"
 LABEL "version"="1.0.0"
-LABEL "com.github.actions.inputs.projectToken.description"="Description goes here"
+LABEL "com.github.actions.inputs.projectToken.description"="Chromatic project token"
 LABEL "com.github.actions.inputs.projectToken.required"="true"
 LABEL "com.github.actions.inputs.appCode.description"="Description goes here"
 LABEL "com.github.actions.inputs.appCode.required"="false"
