@@ -7,3 +7,6 @@
 [submodule "packages/chromatic/module"]
 	path = packages/chromatic/module
 	url = https://github.com/chromaui/action.git
+[submodule "packages/github-push-action/old"]
+	path = packages/github-push-action
+	url = https://github.com/ad-m/github-push-action.git
