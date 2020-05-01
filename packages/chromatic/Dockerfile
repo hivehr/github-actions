@@ -49,7 +49,6 @@ COPY .yarn .yarn
 RUN time yarn install --frozen-lockfile --no-cache --production=false
 
 COPY module/ .
-RUN ls -hal
 RUN yarn build
 
 COPY entrypoint.sh /entrypoint.sh
