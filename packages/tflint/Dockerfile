@@ -10,7 +10,7 @@ LABEL "com.github.actions.description"="Lints terraform files in your repository
 LABEL "com.github.actions.icon"="box"
 LABEL "com.github.actions.color"="orange"
 
-RUN apk add --no-cache bash=5.0.11-r1 ca-certificates=20191127-r1 unzip=6.0-r4 curl=7.67.0-r0
+RUN apk add --no-cache bash=5.0.11-r1 ca-certificates=20191127-r2 unzip=6.0-r6 curl=7.67.0-r0
 RUN rm -rf /var/cache/apk/*
 RUN cd tmp && \
     curl -OL https://github.com/wata727/tflint/releases/download/v${VERSION}/tflint_linux_amd64.zip && \
