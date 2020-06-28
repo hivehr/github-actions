@@ -30,5 +30,6 @@ jobs:
           context: packages/document-routes
           image_name: hivehr/github-actions-document-routes
           image_tag: latest
-          username: "${{ secrets.DOCKERHUB_USERNAME }}"
-          password: "${{ secrets.DOCKERHUB_TOKEN }}"
+          registry: "${{ secrets.DOCKER_REGISTRY_URL }}"
+          username: "${{ secrets.DOCKER_REGISTRY_USERNAME }}"
+          password: "${{ secrets.DOCKER_REGISTRY_ACCESS_TOKEN }}"
