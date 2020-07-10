@@ -147,7 +147,7 @@ const transition = async (
 
 const main = async () => {
     const client = jiraFactory();
-    const issueKey = getInput("key");
+    const issueKey = getInput("key").toLowerCase();
 
     await transition(client, issueKey, getInput("to"), getInput("from"));
     await assign(client, issueKey, getInput("assignee"));

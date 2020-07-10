@@ -40,7 +40,10 @@ const main = async () => {
     const pattern = new RegExp(patternInput);
 
     // Match against the input title
-    const issueKey = getFirstMatchingGroup(pattern, getInput("string"));
+    const issueKey = getFirstMatchingGroup(
+        pattern,
+        getInput("string")
+    ).toLowerCase();
 
     const client = jiraFactory();
 
