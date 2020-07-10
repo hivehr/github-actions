@@ -1,8 +1,18 @@
 {
     "tabWidth": 4,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "endOfLine": "auto",
     "overrides": [
         {
-            "files": ["*.yml", "*.yaml"],
+            "files": ["**/*.yml", "**/*.yaml"],
+            "options": {
+                "tabWidth": 2,
+                "useTabs": false
+            }
+        },
+        {
+            "files": ["**/intl/*.json"],
             "options": {
                 "tabWidth": 2,
                 "useTabs": false
