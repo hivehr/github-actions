@@ -54,7 +54,6 @@ const main = async () => {
         issue = await client.issue.getIssue({
             issueKey
         });
-        debug(JSON.stringify(issue, null, 2));
     } catch (e) {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
