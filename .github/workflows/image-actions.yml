@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/image-actions/*"
+      - "packages/image-actions/*&"
       - ".github/workflows/image-actions.yml"
 
 jobs:
