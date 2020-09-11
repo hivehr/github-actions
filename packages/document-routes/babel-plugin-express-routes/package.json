@@ -13,7 +13,7 @@
         "@babel/core": "7",
         "@babel/preset-typescript": "7.8.3",
         "@babel/types": "7.8.7",
-        "fs-extra": "8.1.0"
+        "fs-extra": "9.0.0"
     },
     "devDependencies": {
         "babel-jest": "25.1.0",
