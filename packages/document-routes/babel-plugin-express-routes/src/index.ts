@@ -171,7 +171,7 @@ export default function({
                             this.permissions.get(method) ||
                             new Map<string, Route>();
                         methodMap.set(pathName, {
-                            permissions: "(" + orGroups.join(") || (") + ")"
+                            permissions: "(" + orGroups.join(") + (") + ")"
                         });
                         this.permissions.set(method, methodMap);
                     } else {
