@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/document-routes/*"
+      - "packages/document-routes/**"
       - ".github/workflows/document-routes.yml"
 
 jobs:
