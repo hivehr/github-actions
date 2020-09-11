@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/transition-jira-issue/*"
+      - "packages/transition-jira-issue/**"
       - ".github/workflows/transition-jira-issue.yml"
 
 jobs:

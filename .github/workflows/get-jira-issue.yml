@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/get-jira-issue/*"
+      - "packages/get-jira-issue/**"
       - ".github/workflows/get-jira-issue.yml"
 
 jobs:

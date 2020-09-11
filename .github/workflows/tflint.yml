@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/tflint/*"
+      - "packages/tflint/**"
       - ".github/workflows/tflint.yml"
 
 jobs:

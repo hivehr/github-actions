@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/update-pr/*"
+      - "packages/update-pr/**"
       - ".github/workflows/update-pr.yml"
 
 jobs:

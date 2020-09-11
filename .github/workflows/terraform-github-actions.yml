@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - "packages/terraform-github-actions/*"
+      - "packages/terraform-github-actions/**"
       - ".github/workflows/terraform-github-actions.yml"
 
 jobs:
