@@ -21,7 +21,7 @@ exports[`Permissions require scope with single rag and two ors with single arg 1
   \\"methods\\": {
     \\"get\\": {
       \\"/route\\": {
-        \\"permissions\\": \\"(over here 2) || (here) || (permission)\\"
+        \\"permissions\\": \\"(over here 2) + (here) + (permission)\\"
       }
     }
   }
@@ -49,7 +49,7 @@ exports[`Permissions requireScope with array arg and 'or' with array arg 1`] = `
   \\"methods\\": {
     \\"get\\": {
       \\"/route\\": {
-        \\"permissions\\": \\"(here && here2) || (permission && permissions1)\\"
+        \\"permissions\\": \\"(here && here2) + (permission && permissions1)\\"
       }
     }
   }
@@ -77,7 +77,7 @@ exports[`Permissions requireScope with single arg and 'or' with array arg 1`] = 
   \\"methods\\": {
     \\"get\\": {
       \\"/route\\": {
-        \\"permissions\\": \\"(here && here2) || (permission)\\"
+        \\"permissions\\": \\"(here && here2) + (permission)\\"
       }
     }
   }
@@ -91,7 +91,7 @@ exports[`Permissions requireScope with single arg and 'or' with single arg 1`] =
   \\"methods\\": {
     \\"get\\": {
       \\"/route\\": {
-        \\"permissions\\": \\"(here) || (permission)\\"
+        \\"permissions\\": \\"(here) + (permission)\\"
       }
     }
   }
