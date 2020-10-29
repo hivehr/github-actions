@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - "packages/image-actions/*&"
-      - ".github/workflows/image-actions.yml"
 
 jobs:
   build:

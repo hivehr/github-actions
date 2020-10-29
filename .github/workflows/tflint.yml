@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - "packages/tflint/**"
-      - ".github/workflows/tflint.yml"
 
 jobs:
   build:
