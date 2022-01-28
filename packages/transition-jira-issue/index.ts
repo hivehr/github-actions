@@ -23,9 +23,9 @@ const request = <T extends (...args: any[]) => any>(
 ): ReturnType<T> => {
     try {
         return method();
-    } catch (e) {
-        debug(e);
-        throw new Error(JSON.parse(e).body.errorMessages[0]);
+    } catch (e: unknown) {
+        debug(e as string);
+        throw new Error(JSON.parse(e as string).body.errorMessages[0]);
     }
 };
 
@@ -159,7 +159,7 @@ if (require.main === module) {
             await main();
             process.exit(0);
         } catch (err) {
-            setFailed(err.message);
+            setFailed((err as Error)?.message ?? err as string);
             throw err;
         }
     })();

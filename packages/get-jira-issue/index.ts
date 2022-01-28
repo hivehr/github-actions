@@ -51,8 +51,8 @@ const main = async () => {
         issue = await client.issue.getIssue({
             issueKey
         });
-    } catch (e) {
-        throw new Error(JSON.parse(e).body.errorMessages[0]);
+    } catch (e: unknown) {
+        throw new Error(JSON.parse(e as string).body.errorMessages[0]);
     }
 
     // Generate outputs
@@ -95,7 +95,7 @@ if (require.main === module) {
             await main();
             process.exit(0);
         } catch (err) {
-            setFailed(err.message);
+            setFailed((err as Error)?.message ?? err as string);
             throw err;
         }
     })();
