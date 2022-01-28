@@ -51,7 +51,7 @@ const main = async () => {
         issue = await client.issue.getIssue({
             issueKey
         });
-    } catch (e: any) {
+    } catch (e) {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
 
@@ -94,7 +94,7 @@ if (require.main === module) {
         try {
             await main();
             process.exit(0);
-        } catch (err: any) {
+        } catch (err) {
             setFailed(err.message);
             throw err;
         }
