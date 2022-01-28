@@ -1,5 +1,6 @@
 import { info, getInput, setFailed } from "@actions/core";
 import { context, GitHub } from "@actions/github";
+import { compact } from "lodash";
 
 const parseTitle = (title: string, oldTitle: string) => {
     if (title == null || title === "") {
@@ -51,8 +52,11 @@ const parseLabels = (
         return undefined;
     }
 
-    const labels = new Set([...currentLabels, ...addLabels.split(delimiter)]);
-    removeLabels.split(delimiter).forEach(l => labels.delete(l));
+    const labels = new Set([
+        ...compact(currentLabels),
+        ...compact(addLabels.split(delimiter))
+    ]);
+    compact(removeLabels.split(delimiter)).forEach(l => labels.delete(l));
 
     return Array.from(labels);
 };
