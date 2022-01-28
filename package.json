@@ -1,0 +1,14 @@
+{
+    "name": "@hive/github-actions",
+    "version": "1.0.0",
+    "license": "UNLICENSED",
+    "private": true,
+    "engines": {
+        "node": "17.4.0"
+    },
+    "scripts": {
+        "all": "./scripts/per-package.sh \"*\"",
+        "some": "./scripts/per-package.sh",
+        "pkg": "./scripts/in-package.sh"
+    }
+}
