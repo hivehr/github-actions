@@ -75,7 +75,7 @@ describe("Permissions", () => {
         let errored = false
         try {
             verifyFile("max_depth")
-        } catch (e: unknown) {
+        } catch (e) {
             errored = true;
             expect(e.message).toEqual(expect.stringContaining("max_depth.ts: Max Depth Exceeded"))
         }
