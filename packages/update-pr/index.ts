@@ -1,5 +1,5 @@
 import { info, getInput, setFailed } from "@actions/core";
-import { context, GitHub } from "@actions/github";
+import GitHub, { context, getOctokit } from "@actions/github";
 import { compact } from "lodash";
 
 const parseTitle = (title: string, oldTitle: string) => {
@@ -89,10 +89,10 @@ async function main() {
     info(`Updating PR: ${JSON.stringify(inputs)}`);
 
     // Setup GitHub client with the given GITHUB_TOKEN
-    const client = new GitHub(getInput("repo-token"));
+    const client = getOctokit(getInput("repo-token"));
 
     // Update PR with given inputs
-    await client.pulls.update({
+    await client.rest.pulls.update({
         owner,
         repo,
         title: inputs.title,
@@ -103,7 +103,7 @@ async function main() {
     // Update related PR issue with given labels
     const { labels } = inputs;
     if (labels != null) {
-        await client.issues.update({
+        await client.rest.issues.update({
             owner,
             repo,
             labels,
@@ -118,7 +118,7 @@ if (require.main === module) {
             await main();
             process.exit(0);
         } catch (err) {
-            setFailed(err.message);
+            setFailed((err as Error)?.message ?? err as string);
             throw err;
         }
     })();
