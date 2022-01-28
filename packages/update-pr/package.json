@@ -6,7 +6,7 @@
     "author": "Hive HR <engineering@hive.hr>",
     "main": "lib/index.js",
     "engines": {
-        "node": "12"
+        "node": "17"
     },
     "scripts": {
         "start": "node lib/index.js",

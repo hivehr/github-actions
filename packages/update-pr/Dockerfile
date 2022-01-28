@@ -1,4 +1,4 @@
-FROM node:12.16.1-alpine
+FROM node:17.4.0-alpine
 
 LABEL "name"="Update GitHub PR"
 LABEL "maintainer"="Hive HR <engineering@hive.hr>"
