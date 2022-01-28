@@ -2,9 +2,6 @@ import { debug, getInput, info, setFailed, setOutput } from "@actions/core";
 import Jira from "jira-connector";
 import { JIRA_BASE_URL, JIRA_USER_EMAIL, JIRA_API_TOKEN } from "./env";
 
-const getOrDefault = (obj: any, key: string, defaultValue: any) =>
-    obj != null && obj[key] != null ? obj[key] : defaultValue;
-
 const toString = (value: any) => {
     if (value == null) {
         return "";
@@ -54,24 +51,35 @@ const main = async () => {
         issue = await client.issue.getIssue({
             issueKey
         });
-    } catch (e) {
+    } catch (e: any) {
         throw new Error(JSON.parse(e).body.errorMessages[0]);
     }
 
     // Generate outputs
+	const parentIssue = issue.fields.parent;
     const outputs = {
+		projectKey: issue.fields.project?.key,
+
         key: issue.key,
+		type: issue.fields.issuetype.name,
+		isSubTask: issue.fields.issuetype?.subtask,
         summary: issue.fields.summary,
-        status: issue.fields.status.name,
-        projectKey: issue.fields.project.key,
-        labels: issue.fields.labels.join(","),
-        creator: issue.fields.creator.emailAddress,
-        timeSpent: getOrDefault(
-            issue.fields.timetracking,
-            "timeSpentSeconds",
-            "0"
-        ),
-        url: `https://${JIRA_BASE_URL}/browse/${issue.key}`
+        status: issue.fields.status?.name,
+        labels: issue.fields.labels,
+        components: issue.fields.components?.map((c: any) => c.name) ?? [],
+		creator: issue.fields.creator?.emailAddress,
+		assignee: issue.fields.assignee?.emailAddress,
+		reporter: issue.fields.reporter?.emailAddress,
+        timeSpent: issue.fields.timetracking?.timeSpentSeconds ?? 0,
+		url: `https://${JIRA_BASE_URL}/browse/${issue.key}`,
+
+		parentKey: parentIssue?.key,
+		parentType: parentIssue?.fields.issuetype?.name,
+		parentSummary: parentIssue?.fields?.summary,
+		parentStatus: parentIssue?.name,
+		parentUrl: parentIssue?.key != null ?
+			`https://${JIRA_BASE_URL}/browse/${parentIssue.key}` :
+			undefined
     };
     info("Outputs:\n" + JSON.stringify(outputs, null, 2));
 
@@ -86,7 +94,7 @@ if (require.main === module) {
         try {
             await main();
             process.exit(0);
-        } catch (err) {
+        } catch (err: any) {
             setFailed(err.message);
             throw err;
         }
