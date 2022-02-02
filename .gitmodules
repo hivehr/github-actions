@@ -5,5 +5,5 @@
 	path = packages/terraform-github-actions
 	url = https://github.com/hashicorp/terraform-github-actions
 [submodule "packages/chromatic/module"]
-	path = packages/chromatic/module
+	path = chromatic
 	url = https://github.com/chromaui/action.git
