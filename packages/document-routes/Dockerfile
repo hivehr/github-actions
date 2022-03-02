@@ -7,6 +7,10 @@ LABEL "version"="1.0.0"
 LABEL "com.github.actions.inputs.pattern.description"="Glob pattern to search for route files (relative to github workspace)"
 LABEL "com.github.actions.inputs.pattern.required"="true"
 
+LABEL "com.github.actions.inputs.ignore_patterns.description"="List of globs to ignore"
+LABEL "com.github.actions.inputs.ignore_patterns.required"="false"
+LABEL "com.github.actions.inputs.ignore_patterns.default"="''"
+
 LABEL "com.github.actions.inputs.out_path.description"="Location to store the generated files (relative to github workspace)"
 LABEL "com.github.actions.inputs.out_path.required"="true"
 
